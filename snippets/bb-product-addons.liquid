@@ -1,0 +1,144 @@
+{%- comment -%}
+  PRODUCT ADD-ONS — CENTRALIZED FORM HANDLER
+  Ported from BroBasket / Bounty bb-product-addons.liquid v2.6 (2026-09-16).
+
+  Add-on snippets (bb-gift-card-message, bb-custom-engraving, bb-engraved-glass)
+  register themselves on window.productAddons with getItem() / validate().
+  When at least one add-on is chosen, this handler takes over the product
+  form submit (capture phase) and adds the basket plus every add-on in ONE
+  cart/add.js call, so the lines can never get separated by a partial add.
+
+  If no add-on is chosen it returns immediately and the normal theme
+  submit in night-shift.js handles the add.
+
+  Night Shift differences from BroBasket:
+  - No Impact cart-drawer section rendering. After a successful add we call
+    window.NightShift.cartUpdated(), which refreshes and opens our side cart.
+    If that isn't available we fall back to /cart.
+  - Validation errors are shown inline in the theme's own style.
+
+  Accepts: product_form_id
+{%- endcomment -%}
+<script>
+  (function () {
+    'use strict';
+    var busy = false;
+
+    function init() {
+      var form = document.getElementById('{{ product_form_id }}');
+      if (!form || form.dataset.addonsHandler === 'true') return;
+      form.dataset.addonsHandler = 'true';
+
+      function addons() { return window.productAddons || {}; }
+
+      function selectedItems() {
+        var out = [];
+        Object.keys(addons()).forEach(function (k) {
+          var a = addons()[k];
+          if (!a.getItem) return;
+          var item = a.getItem();
+          if (Array.isArray(item)) out.push.apply(out, item); else if (item) out.push(item);
+        });
+        return out;
+      }
+
+      function clearErrors() {
+        form.querySelectorAll('.addon__error').forEach(function (el) { el.remove(); });
+        form.querySelectorAll('[aria-invalid="true"]').forEach(function (el) { el.removeAttribute('aria-invalid'); });
+      }
+
+      function showError(field, message) {
+        field.setAttribute('aria-invalid', 'true');
+        var el = document.createElement('p');
+        el.className = 'addon__error';
+        el.setAttribute('role', 'alert');
+        el.textContent = message;
+        field.insertAdjacentElement('afterend', el);
+        field.addEventListener('input', function () { el.remove(); field.removeAttribute('aria-invalid'); }, { once: true });
+      }
+
+      function validate() {
+        clearErrors();
+        var bad = Array.prototype.filter.call(form.querySelectorAll('input[required], textarea[required], select[required]'), function (f) {
+          return !f.closest('[hidden]') && !String(f.value || '').trim();
+        });
+        bad.forEach(function (f) {
+          var label = form.querySelector('label[for="' + f.id + '"]');
+          var name = label ? label.textContent.replace('*', '').trim() : 'This field';
+          showError(f, name + ' is required to add to cart.');
+        });
+        if (bad.length) {
+          bad[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTimeout(function () { try { bad[0].focus({ preventScroll: true }); } catch (_) { bad[0].focus(); } }, 250);
+          return false;
+        }
+        return Object.keys(addons()).every(function (k) { return !addons()[k].validate || addons()[k].validate(); });
+      }
+
+      form.addEventListener('submit', function (event) {
+        if (busy) { event.preventDefault(); event.stopImmediatePropagation(); return; }
+        if (!Object.keys(addons()).length) return;
+
+        if (!validate()) { event.preventDefault(); event.stopImmediatePropagation(); return; }
+
+        var items = selectedItems();
+        if (!items.length) return; // nothing extra chosen → normal theme add
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        busy = true;
+
+        var variantId = parseInt((form.querySelector('input[name="id"]') || {}).value, 10);
+        var qtyInput = form.querySelector('input[name="quantity"]');
+        var quantity = parseInt(qtyInput ? qtyInput.value : '1', 10) || 1;
+
+        var properties = {};
+        form.querySelectorAll('[name^="properties["]').forEach(function (input) {
+          var m = input.name.match(/^properties\[(.+)\]$/);
+          if (!m) return;
+          if (input.type === 'checkbox') { if (input.checked) properties[m[1]] = input.value || 'Yes'; }
+          else if (String(input.value || '').trim()) properties[m[1]] = input.value.trim();
+        });
+
+        var sellingPlan = form.querySelector('input[name="selling_plan"]:checked');
+        var main = { id: variantId, quantity: quantity, properties: properties };
+        if (sellingPlan && sellingPlan.value) main.selling_plan = parseInt(sellingPlan.value, 10);
+
+        var payload = [main].concat(items.map(function (a) {
+          return { id: a.id, quantity: quantity, properties: a.properties };
+        }));
+
+        var btn = form.querySelector('[type="submit"]');
+        var label = btn ? btn.textContent : '';
+        if (btn) { btn.disabled = true; btn.setAttribute('data-state', 'loading'); btn.textContent = 'Adding…'; }
+
+        var root = (window.Shopify && Shopify.routes && Shopify.routes.root) || '/';
+        fetch(root + 'cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ items: payload })
+        })
+          .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+          .then(function (res) {
+            if (!res.ok) throw new Error((res.data && res.data.description) || 'Could not add to cart.');
+            Object.keys(addons()).forEach(function (k) { if (addons()[k].reset) addons()[k].reset(); });
+            if (window.NightShift && typeof window.NightShift.cartUpdated === 'function') {
+              window.NightShift.cartUpdated();
+            } else {
+              window.location.href = root + 'cart';
+            }
+          })
+          .catch(function (err) {
+            console.error('[bb-product-addons]', err);
+            if (btn) showError(btn, err.message || 'Could not add to cart. Please try again.');
+          })
+          .finally(function () {
+            busy = false;
+            if (btn) { btn.disabled = false; btn.removeAttribute('data-state'); btn.textContent = label; }
+          });
+      }, true);
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  })();
+</script>

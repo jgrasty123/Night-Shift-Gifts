@@ -217,6 +217,12 @@
     });
   }
 
+  // hook for bb-product-addons.liquid: basket + add-ons were added in one call
+  window.NightShift = window.NightShift || {};
+  window.NightShift.cartUpdated = function () {
+    return fetchCart().then(openCart);
+  };
+
   // paint the badge on load
   setCount(parseInt((document.querySelector('[data-cart-count]') || {}).textContent || '0', 10));
 
@@ -306,6 +312,8 @@
         addBtn.disabled = !variant.available;
         addBtn.textContent = variant.available ? 'Add to cart' : 'Sold out';
       }
+
+      document.dispatchEvent(new CustomEvent('nightshift:variant', { detail: { variant: variant } }));
 
       // keep the URL shareable without a reload
       var url = new URL(window.location.href);

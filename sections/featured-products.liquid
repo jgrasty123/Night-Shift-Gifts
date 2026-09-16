@@ -18,7 +18,7 @@
     <div class="grid armed">
       {%- if coll != blank and coll.products_count > 0 -%}
         {%- for product in coll.products limit: limit -%}
-          {% render 'product-card', card_product: product %}
+          {%- unless product.tags contains 'hidden' -%}{% render 'product-card', card_product: product %}{%- endunless -%}
         {%- endfor -%}
       {%- else -%}
         {%- for i in (1..limit) -%}

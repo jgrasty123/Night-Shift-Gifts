@@ -1,0 +1,92 @@
+{%- comment -%}
+  GIFT CARD + MESSAGE  (ported from BroBasket / Bounty bb-gift-card-message.liquid)
+
+  Shows when custom.option_set_v2 contains "Card" AND the companion product
+  with handle "special-card" exists and is published to the Online Store.
+  The chosen card variant is added to the cart as its own line through the
+  centralized handler (bb-product-addons.liquid), carrying:
+    Message  — the customer's note
+    For      — the basket title, so the packer knows which box it goes in
+
+  The first variant whose title contains "Free" is preselected, so every
+  basket ships with a card unless the customer picks "No card".
+
+  Accepts: product
+{%- endcomment -%}
+{%- assign gift_card_product = all_products['special-card'] -%}
+{%- liquid
+  assign show_gift_card = false
+  assign option_set = product.metafields.custom.option_set_v2 | metafield_text
+  if option_set contains 'Card' and gift_card_product != blank and gift_card_product.available
+    assign show_gift_card = true
+  endif
+  assign default_card = nil
+  for variant in gift_card_product.variants
+    if variant.title contains 'Free' and variant.available
+      assign default_card = variant
+      break
+    endif
+  endfor
+-%}
+
+{%- if show_gift_card -%}
+  <div class="addon" data-gift-card-wrapper data-product-title="{{ product.title | escape }}">
+    <label class="pdp__rowlabel" for="gift-card-select-{{ product.id }}">Gift card</label>
+    <div class="addon__select">
+      <select id="gift-card-select-{{ product.id }}" data-gift-card-select>
+        <option value="" data-variant-id="">No card</option>
+        {%- for variant in gift_card_product.variants -%}
+          {%- if variant.available -%}
+            <option value="{{ variant.id }}" data-variant-id="{{ variant.id }}"
+              {%- if default_card and variant.id == default_card.id %} selected{% endif %}>
+              {{ variant.title }}{% if variant.price > 0 %} — {{ variant.price | money }}{% endif %}
+            </option>
+          {%- endif -%}
+        {%- endfor -%}
+      </select>
+    </div>
+
+    <div class="addon__reveal" data-gift-card-message-wrapper {% unless default_card %}hidden{% endunless %}>
+      <label class="pdp__rowlabel" for="gift-card-message-{{ product.id }}">Message for the card <span class="addon__opt">(optional)</span></label>
+      <textarea id="gift-card-message-{{ product.id }}" data-gift-card-message rows="3" maxlength="200"
+                placeholder="Congrats on the new night shift!"></textarea>
+      <p class="giftnote__count"><span data-gift-card-count>0</span>/200</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+      function init() {
+        var wrapper = document.querySelector('[data-gift-card-wrapper]');
+        if (!wrapper) return;
+        var select = wrapper.querySelector('[data-gift-card-select]');
+        var reveal = wrapper.querySelector('[data-gift-card-message-wrapper]');
+        var message = wrapper.querySelector('[data-gift-card-message]');
+        var count = wrapper.querySelector('[data-gift-card-count]');
+        var title = wrapper.dataset.productTitle;
+
+        select.addEventListener('change', function () {
+          var on = !!select.value;
+          reveal.hidden = !on;
+          if (!on) { message.value = ''; count.textContent = '0'; }
+        });
+        message.addEventListener('input', function () { count.textContent = message.value.length; });
+
+        window.productAddons = window.productAddons || {};
+        window.productAddons.giftCard = {
+          getItem: function () {
+            if (!select.value) return null;
+            return {
+              id: parseInt(select.value, 10),
+              properties: { 'Message': message.value.trim(), 'For': title }
+            };
+          },
+          reset: function () { message.value = ''; count.textContent = '0'; },
+          validate: function () { return true; }
+        };
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+    })();
+  </script>
+{%- endif -%}

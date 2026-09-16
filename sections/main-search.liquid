@@ -18,7 +18,7 @@
         {%- paginate search.results by 24 -%}
           <div class="grid">
             {%- for item in search.results -%}
-              {%- if item.object_type == 'product' -%}
+              {%- if item.object_type == 'product' and item.tags contains 'hidden' -%}{%- elsif item.object_type == 'product' -%}
                 {% render 'product-card', card_product: item %}
               {%- endif -%}
             {%- endfor -%}

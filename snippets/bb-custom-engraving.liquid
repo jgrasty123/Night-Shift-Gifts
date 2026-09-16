@@ -1,0 +1,116 @@
+{%- comment -%}
+  BOTTLE ENGRAVING  (ported from BroBasket / Bounty bb-custom-engraving.liquid)
+
+  Shows when custom.option_set_v2 contains "Engraved Bottle" AND the companion
+  product with handle "engraving" exists and is published.
+  "Engraving Mandatory" in the metafield removes the "No engraving" choice.
+
+  Night Shift difference: baskets come in a booze-free version and an alcohol
+  version. There is no bottle to engrave in most booze-free versions, so this
+  block hides itself (and clears any choice) while the selected variant's
+  first option is "Booze-free". main-product dispatches `nightshift:variant`
+  whenever the variant changes.
+
+  Adds the engraving variant as its own cart line with:
+    For, Engraving Text
+
+  Accepts: product
+{%- endcomment -%}
+{%- assign engraving_product = all_products['engraving'] -%}
+{%- liquid
+  assign show_engraving = false
+  assign is_mandatory = false
+  assign option_set = product.metafields.custom.option_set_v2 | metafield_text
+  if option_set contains 'Engraved Bottle' and engraving_product != blank and engraving_product.available
+    assign show_engraving = true
+    if option_set contains 'Engraving Mandatory'
+      assign is_mandatory = true
+    endif
+  endif
+  assign start_hidden = false
+  if product.selected_or_first_available_variant.option1 == 'Booze-free'
+    assign start_hidden = true
+  endif
+-%}
+
+{%- if show_engraving -%}
+  <div class="addon" data-engraving-wrapper data-product-title="{{ product.title | escape }}"
+       data-mandatory="{{ is_mandatory }}" {% if start_hidden %}hidden{% endif %}>
+    <p class="pdp__rowlabel">Bottle engraving</p>
+    <div class="addon__choices" role="radiogroup" aria-label="Bottle engraving">
+      {%- unless is_mandatory -%}
+        <label class="choice"><input type="radio" name="engraving_type" value="" data-engraving-radio checked><span>No engraving</span></label>
+      {%- endunless -%}
+      {%- for variant in engraving_product.variants -%}
+        {%- if variant.available -%}
+          <label class="choice">
+            <input type="radio" name="engraving_type" value="{{ variant.id }}" data-engraving-radio
+                   {% if is_mandatory and forloop.first %}checked{% endif %}>
+            <span>{{ variant.title }} <small>{{ variant.price | money }}</small></span>
+          </label>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="addon__reveal" data-engraving-text-wrapper {% unless is_mandatory %}hidden{% endunless %}>
+      <label class="pdp__rowlabel" for="engraving-text-{{ product.id }}">Engraving text <span class="addon__req">*</span></label>
+      <input type="text" id="engraving-text-{{ product.id }}" name="engraving_text" data-engraving-text maxlength="50"
+             placeholder="Initials or a short message" {% if is_mandatory and start_hidden == false %}required{% endif %}>
+      <p class="giftnote__count">Up to 50 characters</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+      function init() {
+        var wrapper = document.querySelector('[data-engraving-wrapper]');
+        if (!wrapper) return;
+        var radios = wrapper.querySelectorAll('[data-engraving-radio]');
+        var reveal = wrapper.querySelector('[data-engraving-text-wrapper]');
+        var text = wrapper.querySelector('[data-engraving-text]');
+        var title = wrapper.dataset.productTitle;
+        var mandatory = wrapper.dataset.mandatory === 'true';
+
+        function selected() { return wrapper.querySelector('[data-engraving-radio]:checked'); }
+        function sync() {
+          var r = selected();
+          var on = !!(r && r.value) && !wrapper.hidden;
+          reveal.hidden = !on;
+          if (on) text.setAttribute('required', 'required');
+          else { text.removeAttribute('required'); if (!(r && r.value)) text.value = ''; }
+        }
+        radios.forEach(function (r) { r.addEventListener('change', sync); });
+
+        document.addEventListener('nightshift:variant', function (e) {
+          var v = e.detail && e.detail.variant;
+          var boozeFree = !!(v && v.option1 === 'Booze-free');
+          wrapper.hidden = boozeFree;
+          if (boozeFree && !mandatory) {
+            var none = wrapper.querySelector('[data-engraving-radio][value=""]');
+            if (none) none.checked = true;
+            text.value = '';
+          }
+          sync();
+        });
+
+        window.productAddons = window.productAddons || {};
+        window.productAddons.engraving = {
+          getItem: function () {
+            var r = selected();
+            if (wrapper.hidden || !r || !r.value) return null;
+            return { id: parseInt(r.value, 10), properties: { 'For': title, 'Engraving Text': text.value.trim() } };
+          },
+          reset: function () { text.value = ''; },
+          validate: function () {
+            var r = selected();
+            if (wrapper.hidden || !r || !r.value) return !mandatory || wrapper.hidden;
+            return text.value.trim().length > 0;
+          }
+        };
+        sync();
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+    })();
+  </script>
+{%- endif -%}

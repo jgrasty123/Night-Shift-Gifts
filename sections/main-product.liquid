@@ -89,7 +89,26 @@
             {%- endfor -%}
           {%- endunless -%}
 
-          {%- if section.settings.gift_message -%}
+          {%- comment -%}
+            Add-ons (card, bottle engraving, engraved glass) are driven by the
+            product's custom.option_set_v2 metafield and the companion products
+            special-card / engraving / engraved-glass. See README "Add-ons".
+          {%- endcomment -%}
+          {%- liquid
+            assign addon_option_set = product.metafields.custom.option_set_v2 | metafield_text
+            assign card_addon = false
+            if addon_option_set contains 'Card' and all_products['special-card'] != blank and all_products['special-card'].available
+              assign card_addon = true
+            endif
+          -%}
+          <div class="addons">
+            {%- render 'bb-gift-card-message', product: product -%}
+            {%- render 'bb-custom-engraving', product: product -%}
+            {%- render 'bb-engraved-glass', product: product -%}
+          </div>
+
+          {%- comment -%} The free-text gift message is only used when the card add-on is not available, so a basket never asks for two messages. {%- endcomment -%}
+          {%- if section.settings.gift_message and card_addon == false -%}
             <div class="giftnote">
               <label class="pdp__rowlabel" for="gift-message-{{ section.id }}">{{ section.settings.gift_message_label }}</label>
               <textarea id="gift-message-{{ section.id }}"
@@ -151,6 +170,7 @@
             {%- endif -%}
           </button>
         {%- endform -%}
+        {%- render 'bb-product-addons', product_form_id: 'product-form' -%}
 
         {%- if section.settings.ship_note != blank -%}
           <p class="pdp__rowlabel" style="text-align:center">{{ section.settings.ship_note }}</p>
