@@ -84,7 +84,7 @@ BASKETS = [
          collections=["new-moms", "new-dads"], alc=None, lm=["leash"],
          inside=["Craft coffee", "Two mugs", "Breakfast snacks", "Stroller Saver stroller safety leash"],
          blurb="For the morning after the longest night. Two mugs and good coffee, for whoever is on the early shift.",
-         scene="two matching mugs, a bag of coffee beans and breakfast snacks in soft morning light"),
+         scene="two matching mugs, a bag of coffee beans and breakfast snacks"),
     dict(sku="NS-011", handle="clock-in-kit-baby-shower-gift-basket", title="Clock-In Kit — Baby Shower Gift Basket",
          collections=["baby-shower"], alc=None, lm=["tote", "leash", "clips", "belt"],
          inside=["Tot Tote stroller organizer & crossbody bag", "Stroller Saver stroller safety leash", "Stroller clips (2-pack)", "Car seat travel belt"],
@@ -127,7 +127,7 @@ for b in BASKETS:
         if name not in b["inside"]:
             b["inside"].append(name)
         look = LM_LOOK[k]
-        key = look.split(" ")[-1]
+        key = {"leash": "leash", "clips": "clips", "tote": "organizer", "belt": "strap", "cup": "cup", "plates": "plates"}[k]
         if key not in b["scene"]:
             b["scene"] += ", and " + look
 
