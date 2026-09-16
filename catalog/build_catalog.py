@@ -7,7 +7,7 @@ Writes:
   catalog/matrixify_baskets_1of2.csv   products 1-7   (Matrixify, Products entity)
   catalog/matrixify_baskets_2of2.csv   products 8-13
   catalog/matrixify_collections.csv     smart collections (Smart Collections entity)
-  catalog/image_prompts.md              ChatGPT image prompts, one per basket
+  (image prompts: see build_prompts.py)
 
 Everything imports as DRAFT, unpublished, price 0.00 and tagged `needs-pricing`.
 Nothing here can be bought until prices are filled in and the product is set
@@ -37,9 +37,9 @@ BASKETS = [
     dict(sku="NS-001", handle="midnight-toast-push-present", title="Midnight Toast — Push Present Gift Set",
          collections=["push-presents", "new-moms"], alc="With sparkling wine",
          lm=["leash"],
-         inside=["Sparkling cider (booze-free) or sparkling wine", "Engraved flute", "Luxe chocolate bar", "Silk sleep mask"],
+         inside=["Sparkling cider (booze-free) or sparkling wine", "Champagne flute", "Luxe chocolate bar", "Silk sleep mask"],
          blurb="For the one who did the hard part. A toast for the first quiet minute after the big day, whether that's 2pm or 2am.",
-         scene="an engraved flute beside a bottle of sparkling cider, a chocolate bar and a folded silk sleep mask"),
+         scene="a champagne flute beside a bottle of sparkling cider, a chocolate bar and a folded silk sleep mask"),
     dict(sku="NS-002", handle="off-the-clock-new-mom-gift", title="Off the Clock — Gifts for New Moms (Not for the Baby)",
          collections=["new-moms"], alc="With wine", lm=["leash"],
          inside=["Spa set", "Chocolate", "Cozy socks", "Candle"],
@@ -67,9 +67,9 @@ BASKETS = [
          scene="jerky packs, two bottles of craft root beer, black stroller clips, a car seat travel strap and a black crossbody stroller organizer"),
     dict(sku="NS-007", handle="nightcap-first-time-dad-gift", title="Nightcap — First-Time Dad Gift",
          collections=["new-dads"], alc="With whiskey", lm=["leash"],
-         inside=["Craft coffee (booze-free) or whiskey", "Engraved rocks glass", "Jerky", "Stroller Saver stroller safety leash"],
-         blurb="One good drink for the end of a long first week. Coffee or whiskey, his call, poured in a glass with the year the family grew.",
-         scene="an engraved rocks glass, a bag of craft coffee beans, jerky and a coiled stroller leash"),
+         inside=["Craft coffee (booze-free) or whiskey", "Rocks glass", "Jerky", "Stroller Saver stroller safety leash"],
+         blurb="One good drink for the end of a long first week. Coffee or whiskey, his call, with a proper glass to drink it from.",
+         scene="a heavy rocks glass, a bag of craft coffee beans, jerky and a coiled stroller leash"),
     dict(sku="NS-008", handle="night-shift-dad-diaper-duty-gift-pack", title="Night Shift Dad — Diaper Duty Gift Pack",
          collections=["new-dads", "baby-shower"], alc=None, lm=["tote", "clips"],
          inside=["Tot Tote stroller organizer & crossbody bag", "Stroller clips (2-pack)", "Coffee", "Snacks"],
@@ -252,5 +252,5 @@ if __name__ == "__main__":
     write_products("matrixify_baskets_1of2.csv", BASKETS[:7])
     write_products("matrixify_baskets_2of2.csv", BASKETS[7:])
     write_collections()
-    write_prompts()
+    # image prompts now come from build_prompts.py (reads the real recipes)
     print("products:", len(BASKETS), "collections:", len(COLLECTIONS))
