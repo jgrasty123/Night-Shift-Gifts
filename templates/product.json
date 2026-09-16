@@ -1,0 +1,62 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "inside": {
+          "type": "accordion",
+          "settings": {
+            "heading": "What's inside",
+            "metafield_key": "custom.whats_inside",
+            "open": true
+          }
+        },
+        "shipping": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Shipping",
+            "text": "<p>Delivery options and dates are shown at checkout, where shipping eligibility is confirmed for the address.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "inside",
+        "shipping"
+      ],
+      "settings": {
+        "color_scheme": "cream",
+        "price_note": "",
+        "ship_note": "",
+        "gift_message": true,
+        "gift_message_label": "Gift message (optional)",
+        "gift_message_placeholder": "Congrats on the new night shift!",
+        "gift_message_max": 200
+      }
+    },
+    "related": {
+      "type": "featured-products",
+      "settings": {
+        "color_scheme": "paper",
+        "anchor": "related",
+        "limit": 4,
+        "eyebrow": "",
+        "heading": "More gifts for the night shift",
+        "intro": "",
+        "collection": "gift-baskets"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related"
+  ]
+}

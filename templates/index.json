@@ -1,0 +1,197 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "split-hero",
+      "settings": {
+        "color_scheme": "midnight",
+        "eyebrow": "",
+        "line_1": "Gifts for",
+        "line_2": "the night shift",
+        "line_3": "",
+        "subheading": "Gift baskets for new moms, new dads and baby showers.",
+        "cta_label": "Shop gift baskets",
+        "cta2_label": "Shop by recipient",
+        "ship_note": "",
+        "sticker_text": "Night Shift Gift Co. ·"
+      }
+    },
+    "wave_1": {
+      "type": "wave-divider",
+      "settings": {
+        "shape": "a",
+        "color_back": "nightlight",
+        "color_mid": "gold",
+        "color_front": "cream"
+      }
+    },
+    "props": {
+      "type": "value-props",
+      "blocks": {
+        "p1": {
+          "type": "prop",
+          "settings": {
+            "icon": "gift",
+            "title": "Ready to give",
+            "text": ""
+          }
+        },
+        "p2": {
+          "type": "prop",
+          "settings": {
+            "icon": "card",
+            "title": "Add a gift message",
+            "text": ""
+          }
+        },
+        "p3": {
+          "type": "prop",
+          "settings": {
+            "icon": "moon",
+            "title": "Booze-free options",
+            "text": ""
+          }
+        },
+        "p4": {
+          "type": "prop",
+          "settings": {
+            "icon": "truck",
+            "title": "Shipped to their door",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "settings": {
+        "color_scheme": "cream",
+        "flush_top": true
+      }
+    },
+    "recipients": {
+      "type": "collection-tiles",
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "collection": "new-moms",
+            "title": "New moms",
+            "subtitle": "Gifts that aren't for the baby",
+            "count_label": "",
+            "tile_color": "blush"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "collection": "new-dads",
+            "title": "New dads",
+            "subtitle": "Survival kits for the first nights",
+            "count_label": "",
+            "tile_color": "nightlight"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "collection": "baby-shower",
+            "title": "Baby showers",
+            "subtitle": "Practical gifts they'll use daily",
+            "count_label": "",
+            "tile_color": "gold"
+          }
+        },
+        "t4": {
+          "type": "tile",
+          "settings": {
+            "collection": "push-presents",
+            "title": "Push presents",
+            "subtitle": "For the one who did the hard part",
+            "count_label": "",
+            "tile_color": "midnight"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "settings": {
+        "color_scheme": "cream",
+        "anchor": "recipients",
+        "eyebrow": "",
+        "heading": "Who's on the night shift?",
+        "intro": ""
+      }
+    },
+    "gifts": {
+      "type": "featured-products",
+      "settings": {
+        "color_scheme": "paper",
+        "anchor": "gifts",
+        "collection": "gift-baskets",
+        "limit": 8,
+        "eyebrow": "",
+        "heading": "Gift baskets",
+        "intro": "",
+        "view_all": true
+      }
+    },
+    "wave_2": {
+      "type": "wave-divider",
+      "settings": {
+        "shape": "b",
+        "color_back": "gold",
+        "color_mid": "blush",
+        "color_front": "nightlight"
+      }
+    },
+    "booze_free": {
+      "type": "feature-banner",
+      "settings": {
+        "color_scheme": "nightlight",
+        "anchor": "booze-free",
+        "eyebrow": "",
+        "heading": "Every basket, booze-free or not",
+        "text": "",
+        "cta_label": "Shop booze-free",
+        "sticker_text": ""
+      }
+    },
+    "review": {
+      "type": "review-block",
+      "settings": {
+        "color_scheme": "midnight",
+        "placeholder": true,
+        "placeholder_label": "Placeholder review — sample copy",
+        "eyebrow": "",
+        "quote": "\"Customer quote goes here once real reviews are connected.\"",
+        "meta": "Sample layout only\nLive reviews pull from\nthe review app of choice"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "wave_1",
+    "props",
+    "recipients",
+    "gifts",
+    "wave_2",
+    "booze_free",
+    "review"
+  ]
+}

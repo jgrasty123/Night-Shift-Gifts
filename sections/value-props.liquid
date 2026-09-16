@@ -1,0 +1,91 @@
+{%- liquid
+  assign scheme = section.settings.color_scheme | default: 'cream'
+  assign pad = ''
+  if section.settings.flush_top
+    assign pad = 'band--flush-top'
+  endif
+-%}
+<section class="band {{ pad }} scheme scheme--{{ scheme }}">
+  <div class="wrap">
+    <div class="props armed">
+      {%- for block in section.blocks -%}
+        <div class="prop" {{ block.shopify_attributes }}>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            {%- case block.settings.icon -%}
+              {%- when 'gift' -%}<path d="M3 11h18v10H3zM2 7h20v4H2zM12 7v14M12 7S10.5 3 8 3a2 2 0 0 0 0 4M12 7s1.5-4 4-4a2 2 0 0 1 0 4"/>
+              {%- when 'moon' -%}<path d="M20.2 14.6A8.6 8.6 0 0 1 9.4 3.8a8.7 8.7 0 1 0 10.8 10.8Z"/>
+              {%- when 'truck' -%}<path d="M2 6h12v10H2zM14 10h4l3 3v3h-7M6 19a2 2 0 1 0 0-.1M17 19a2 2 0 1 0 0-.1"/>
+              {%- when 'card' -%}<path d="M3 5h18v14H3zM3 5l9 7 9-7"/>
+              {%- when 'heart' -%}<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/>
+              {%- else -%}<path d="M3 11h18v10H3zM2 7h20v4H2zM12 7v14"/>
+            {%- endcase -%}
+          </svg>
+          <b>{{ block.settings.title }}</b>
+          {%- if block.settings.text != blank -%}<span>{{ block.settings.text }}</span>{%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Value props",
+  "tag": "div",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        { "value": "cream", "label": "Moon cream" },
+        { "value": "paper", "label": "Paper" },
+        { "value": "midnight", "label": "Midnight" }
+      ],
+      "default": "cream"
+    },
+    {
+      "type": "checkbox",
+      "id": "flush_top",
+      "label": "Remove top padding",
+      "info": "Use when this section sits directly under a wave divider.",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prop",
+      "name": "Prop",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "gift", "label": "Gift" },
+            { "value": "moon", "label": "Moon" },
+            { "value": "truck", "label": "Delivery" },
+            { "value": "card", "label": "Card" },
+            { "value": "heart", "label": "Heart" }
+          ],
+          "default": "gift"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Ready to give" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Value props",
+      "blocks": [
+        { "type": "prop", "settings": { "icon": "gift", "title": "Ready to give" } },
+        { "type": "prop", "settings": { "icon": "card", "title": "Add a gift message" } },
+        { "type": "prop", "settings": { "icon": "moon", "title": "Booze-free options" } },
+        { "type": "prop", "settings": { "icon": "truck", "title": "Shipped to their door" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

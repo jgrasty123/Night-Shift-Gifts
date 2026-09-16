@@ -1,0 +1,297 @@
+{%- liquid
+  assign v = product.selected_or_first_available_variant
+  assign scheme = section.settings.color_scheme | default: 'cream'
+-%}
+
+<div class="band scheme scheme--{{ scheme }}" style="padding-block:0">
+  <div class="wrap crumbs">
+    <a href="{{ routes.all_products_collection_url }}">All gifts</a>
+    <span>/</span>
+    {%- if collection -%}
+      <a href="{{ collection.url }}">{{ collection.title }}</a>
+      <span>/</span>
+    {%- endif -%}
+    <span>{{ product.title }}</span>
+  </div>
+</div>
+
+<div class="band band--flush-top scheme scheme--{{ scheme }}">
+  <div class="wrap pdp"
+       data-product
+       data-variants="{{ product.variants | json | escape }}"
+       data-url="{{ product.url }}">
+
+    <!-- ---------- gallery ---------- -->
+    <div class="pdp__media">
+      <div class="pdp__frame" data-pdp-frame>
+        {%- if product.featured_media -%}
+          <img data-pdp-img
+               src="{{ product.featured_media | image_url: width: 1200 }}"
+               alt="{{ product.featured_media.alt | default: product.title | escape }}"
+               width="600" height="552"
+               fetchpriority="high">
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag }}
+        {%- endif -%}
+      </div>
+
+      {%- if product.media.size > 1 -%}
+        <div class="pdp__thumbs" data-pdp-thumbs>
+          {%- for media in product.media limit: 6 -%}
+            <button type="button"
+                    aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+                    data-full="{{ media | image_url: width: 1200 }}"
+                    aria-label="{{ media.alt | default: product.title | escape }}">
+              <img src="{{ media | image_url: width: 200 }}"
+                   alt=""
+                   width="100" height="80" loading="lazy">
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- ---------- info ---------- -->
+    <div class="pdp__info">
+      {%- if product.type != blank -%}
+        <p class="eyebrow eyebrow--wick">{{ product.type }}</p>
+      {%- endif -%}
+      <h1>{{ product.title }}</h1>
+
+      {%- if product.tags contains 'booze-free' -%}
+        <div class="card__specs"><i>Booze-free</i></div>
+      {%- endif -%}
+
+      {%- if product.description != blank -%}
+        <div class="pdp__desc rte">{{ product.description }}</div>
+      {%- endif -%}
+
+      <!-- ---------- buy box ---------- -->
+      <div class="buybox">
+        {%- form 'product', product, id: 'product-form', novalidate: 'novalidate' -%}
+          <input type="hidden" name="id" value="{{ v.id }}" data-variant-input>
+
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              <div>
+                <p class="pdp__rowlabel">{{ option.name }}</p>
+                <div class="packs" data-option-index="{{ forloop.index0 }}">
+                  {%- for value in option.values -%}
+                    <button class="pack"
+                            type="button"
+                            data-option-value="{{ value | escape }}"
+                            aria-pressed="{% if option.selected_value == value %}true{% else %}false{% endif %}">
+                      {{ value }}
+                    </button>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endunless -%}
+
+          {%- if section.settings.gift_message -%}
+            <div class="giftnote">
+              <label class="pdp__rowlabel" for="gift-message-{{ section.id }}">{{ section.settings.gift_message_label }}</label>
+              <textarea id="gift-message-{{ section.id }}"
+                        name="properties[Gift message]"
+                        rows="3"
+                        maxlength="{{ section.settings.gift_message_max }}"
+                        data-gift-message
+                        placeholder="{{ section.settings.gift_message_placeholder | escape }}"></textarea>
+              <p class="giftnote__count"><span data-gift-count>0</span>/{{ section.settings.gift_message_max }}</p>
+            </div>
+          {%- endif -%}
+
+          <div class="buybox__price">
+            <span class="price" data-pdp-price>{{ v.price | money }}</span>
+            {%- if v.compare_at_price > v.price -%}
+              <span class="price price--was" data-pdp-compare>{{ v.compare_at_price | money }}</span>
+            {%- endif -%}
+            <span>{{ section.settings.price_note }}</span>
+          </div>
+
+          {%- if product.selling_plan_groups.size > 0 -%}
+            <div class="plan">
+              <label>
+                <input type="radio" name="selling_plan" value="" checked>
+                <span>
+                  <b>{{ 'products.product.one_time' | t }}</b>
+                  <em>{{ v.price | money }}</em>
+                </span>
+              </label>
+
+              {%- for group in product.selling_plan_groups -%}
+                {%- for plan in group.selling_plans -%}
+                  {%- assign allocation = v.selling_plan_allocations
+                        | where: 'selling_plan_id', plan.id | first -%}
+                  <label>
+                    <input type="radio" name="selling_plan" value="{{ plan.id }}">
+                    <span>
+                      <b>{{ plan.name }}</b>
+                      {%- if allocation -%}
+                        <em>{{ allocation.price | money }}</em> ·
+                      {%- endif -%}
+                      skip or cancel anytime
+                    </span>
+                  </label>
+                {%- endfor -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+
+          <button class="cta cta--block"
+                  type="submit"
+                  name="add"
+                  data-pdp-add
+                  {% unless v.available %}disabled{% endunless %}>
+            {%- if v.available -%}
+              {{ 'products.product.add_to_cart' | t }}
+            {%- else -%}
+              {{ 'products.product.sold_out' | t }}
+            {%- endif -%}
+          </button>
+        {%- endform -%}
+
+        {%- if section.settings.ship_note != blank -%}
+          <p class="pdp__rowlabel" style="text-align:center">{{ section.settings.ship_note }}</p>
+        {%- endif -%}
+      </div>
+
+      <!-- ---------- accordions ---------- -->
+      <div class="facts">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign body = block.settings.text
+            if block.settings.metafield_key != blank
+              assign mf_parts = block.settings.metafield_key | split: '.'
+              if mf_parts.size == 2
+                assign mf = product.metafields[mf_parts[0]][mf_parts[1]]
+              else
+                assign mf = product.metafields.custom[block.settings.metafield_key]
+              endif
+              if mf.value != blank
+                if mf.type == 'list.single_line_text_field'
+                  capture body
+                    echo '<ul>'
+                    for item in mf.value
+                      echo '<li>' | append: item | append: '</li>'
+                    endfor
+                    echo '</ul>'
+                  endcapture
+                elsif mf.type == 'rich_text_field'
+                  assign body = mf | metafield_tag
+                else
+                  assign body = mf.value | newline_to_br
+                endif
+              endif
+            endif
+          -%}
+          {%- if body != blank -%}
+            <details {% if block.settings.open %}open{% endif %} {{ block.shopify_attributes }}>
+              <summary>{{ block.settings.heading }}</summary>
+              <div class="facts__body rte">{{ body }}</div>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        {
+          "value": "cream",
+          "label": "Moon cream"
+        },
+        {
+          "value": "paper",
+          "label": "Paper"
+        }
+      ],
+      "default": "cream"
+    },
+    {
+      "type": "text",
+      "id": "price_note",
+      "label": "Price note"
+    },
+    {
+      "type": "text",
+      "id": "ship_note",
+      "label": "Note under the button"
+    },
+    {
+      "type": "header",
+      "content": "Gift message"
+    },
+    {
+      "type": "checkbox",
+      "id": "gift_message",
+      "label": "Show gift message box",
+      "info": "Saved on the order as the line item property \"Gift message\". Make sure fulfillment prints it.",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "gift_message_label",
+      "label": "Label",
+      "default": "Gift message (optional)"
+    },
+    {
+      "type": "text",
+      "id": "gift_message_placeholder",
+      "label": "Placeholder",
+      "default": "Congrats on the new night shift!"
+    },
+    {
+      "type": "range",
+      "id": "gift_message_max",
+      "label": "Character limit",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "default": 200
+    }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "What's inside"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Fallback text"
+        },
+        {
+          "type": "text",
+          "id": "metafield_key",
+          "label": "Metafield (namespace.key)",
+          "info": "Optional, e.g. custom.whats_inside. Single-line list, multi-line text and rich text metafields are supported. Replaces the fallback text when the product has a value."
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open by default",
+          "default": false
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

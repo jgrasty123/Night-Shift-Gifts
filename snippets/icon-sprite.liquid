@@ -1,0 +1,12 @@
+{%- comment -%}
+  Inline SVG sprite. Rendered once in theme.liquid so every section can
+  reference <use href="#moon"> without re-inlining the path.
+{%- endcomment -%}
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="moon" viewBox="0 0 24 24">
+    <path d="M20.2 14.6A8.6 8.6 0 0 1 9.4 3.8a8.7 8.7 0 1 0 10.8 10.8Z"/>
+  </symbol>
+  <symbol id="star" viewBox="0 0 24 24">
+    <path d="M12 2.5c.5 4.6 2.9 7 7.5 7.5-4.6.5-7 2.9-7.5 7.5-.5-4.6-2.9-7-7.5-7.5 4.6-.5 7-2.9 7.5-7.5Z"/>
+  </symbol>
+</svg>

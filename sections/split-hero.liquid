@@ -1,0 +1,108 @@
+{%- liquid
+  assign scheme = section.settings.color_scheme | default: 'midnight'
+-%}
+<section class="hero scheme scheme--{{ scheme }}">
+  <div class="hero__copy">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+
+    <h1>
+      {%- if section.settings.line_1 != blank -%}<span>{{ section.settings.line_1 }}</span>{%- endif -%}
+      {%- if section.settings.line_2 != blank -%}<span class="thin">{{ section.settings.line_2 }}</span>{%- endif -%}
+      {%- if section.settings.line_3 != blank -%}<span>{{ section.settings.line_3 }}</span>{%- endif -%}
+    </h1>
+
+    {%- if section.settings.subheading != blank -%}
+      <p class="hero__sub">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+
+    <div class="hero__actions">
+      {%- if section.settings.cta_label != blank -%}
+        <a class="cta" href="{{ section.settings.cta_url | default: routes.all_products_collection_url }}">{{ section.settings.cta_label }}</a>
+      {%- endif -%}
+      {%- if section.settings.cta2_label != blank -%}
+        <a class="cta cta--ghost" href="{{ section.settings.cta2_url | default: routes.collections_url }}">{{ section.settings.cta2_label }}</a>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.ship_note != blank -%}
+      <p class="hero__ship">
+        <svg class="hop"><use href="#star"/></svg>
+        {{ section.settings.ship_note }}
+      </p>
+    {%- endif -%}
+  </div>
+
+  <div class="hero__stage">
+    <div class="hero__sky" aria-hidden="true">
+      <svg class="hero__star" style="left:12%;top:18%;width:14px"><use href="#star"/></svg>
+      <svg class="hero__star" style="left:78%;top:12%;width:10px"><use href="#star"/></svg>
+      <svg class="hero__star" style="left:86%;top:62%;width:16px"><use href="#star"/></svg>
+      <svg class="hero__star" style="left:20%;top:76%;width:9px"><use href="#star"/></svg>
+      <svg class="hero__star" style="left:52%;top:8%;width:8px"><use href="#star"/></svg>
+    </div>
+
+    {%- if section.settings.image -%}
+      <img
+        class="hero__img"
+        src="{{ section.settings.image | image_url: width: 1100 }}"
+        alt="{{ section.settings.image.alt | default: section.settings.line_1 | escape }}"
+        width="560" height="560"
+        fetchpriority="high">
+    {%- else -%}
+      {%- comment -%}
+        No photo chosen yet: a lamp-lit moon instead of a stock placeholder.
+        Replace with a real basket photo in the theme editor.
+      {%- endcomment -%}
+      <div class="hero__moon" aria-hidden="true">
+        <span class="hero__moon-glow"></span>
+        <svg viewBox="0 0 24 24"><use href="#moon"/></svg>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.sticker_text != blank -%}
+      {% render 'arc-sticker',
+        text: section.settings.sticker_text,
+        ring: 'var(--gold)',
+        ink: 'var(--midnight)',
+        modifier: 'sticker--hero',
+        uid: section.id %}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Split hero",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        { "value": "midnight", "label": "Midnight" },
+        { "value": "cream", "label": "Moon cream" },
+        { "value": "gold", "label": "Lamplight gold" },
+        { "value": "nightlight", "label": "Nightlight blue" },
+        { "value": "blush", "label": "Dawn blush" }
+      ],
+      "default": "midnight"
+    },
+    { "type": "text", "id": "eyebrow", "label": "Small line above heading" },
+    { "type": "text", "id": "line_1", "label": "Heading line 1", "default": "Gifts for" },
+    { "type": "text", "id": "line_2", "label": "Heading line 2 (lamplight)", "default": "the night shift" },
+    { "type": "text", "id": "line_3", "label": "Heading line 3" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Gift baskets for new moms, new dads and baby showers." },
+    { "type": "image_picker", "id": "image", "label": "Hero image", "info": "Square works best. Without one, a moon illustration shows." },
+    { "type": "text", "id": "cta_label", "label": "Primary button", "default": "Shop gift baskets" },
+    { "type": "url", "id": "cta_url", "label": "Primary button link" },
+    { "type": "text", "id": "cta2_label", "label": "Secondary button", "default": "Shop by recipient" },
+    { "type": "url", "id": "cta2_url", "label": "Secondary button link" },
+    { "type": "text", "id": "ship_note", "label": "Note under buttons" },
+    { "type": "text", "id": "sticker_text", "label": "Sticker text", "default": "Night Shift Gift Co. ·" }
+  ],
+  "presets": [{ "name": "Split hero" }]
+}
+{% endschema %}

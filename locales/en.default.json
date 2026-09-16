@@ -1,0 +1,71 @@
+{
+  "general": {
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    },
+    "search": {
+      "heading": "Search",
+      "placeholder": "Search gifts",
+      "submit": "Search",
+      "results_with_count": {
+        "one": "{{ count }} result",
+        "other": "{{ count }} results"
+      },
+      "no_results": "No results for “{{ terms }}”."
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "That page slipped out during the night feed. The gifts are this way.",
+      "link": "Shop all gifts"
+    },
+    "newsletter": {
+      "heading": "Stay in the loop",
+      "placeholder": "you@email.com",
+      "submit": "Join",
+      "success": "You're on the list."
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "menu": "Menu",
+    "close": "Close",
+    "previous_image": "Previous image",
+    "next_image": "Next image"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "one_time": "One time",
+      "subscribe_save": "Subscribe & save",
+      "vendor": "Brand",
+      "regular_price": "Regular price",
+      "sale_price": "Sale price",
+      "from_price": "From"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your cart",
+      "empty": "Your cart is empty.",
+      "continue_shopping": "Keep shopping",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout",
+      "remove": "Remove",
+      "note": "Order notes",
+      "taxes_and_shipping": "Shipping and taxes calculated at checkout.",
+      "gift_message": "Gift message"
+    }
+  },
+  "onboarding": {
+    "product_title": "Example gift basket",
+    "vendor": "Night Shift Gift Co."
+  }
+}

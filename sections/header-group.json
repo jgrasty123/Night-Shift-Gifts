@@ -1,0 +1,55 @@
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "promo": {
+      "type": "promo-marquee",
+      "blocks": {
+        "m1": {
+          "type": "message",
+          "settings": {
+            "text": "Gifts for the night shift"
+          }
+        },
+        "m2": {
+          "type": "message",
+          "settings": {
+            "text": "New moms \u00b7 New dads \u00b7 Baby showers"
+          }
+        },
+        "m3": {
+          "type": "message",
+          "settings": {
+            "text": "Add a gift message to any basket"
+          }
+        },
+        "m4": {
+          "type": "message",
+          "settings": {
+            "text": "Shipping eligibility is confirmed at checkout"
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4"
+      ],
+      "settings": {
+        "color_scheme": "midnight",
+        "speed": 38
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu"
+      }
+    }
+  },
+  "order": [
+    "promo",
+    "header"
+  ]
+}

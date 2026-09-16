@@ -1,0 +1,54 @@
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "about": {
+          "type": "text",
+          "settings": {
+            "heading": "Night Shift Gift Co.",
+            "text": "Gift baskets for new moms, new dads and baby showers."
+          }
+        },
+        "shop": {
+          "type": "menu",
+          "settings": {
+            "heading": "Shop",
+            "menu": "footer"
+          }
+        },
+        "help": {
+          "type": "menu",
+          "settings": {
+            "heading": "Help",
+            "menu": "footer"
+          }
+        },
+        "news": {
+          "type": "newsletter",
+          "settings": {
+            "heading": "Stay in the loop",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "about",
+        "shop",
+        "help",
+        "news"
+      ],
+      "settings": {
+        "color_scheme": "midnight",
+        "anchor": "footer",
+        "wordmark": "Night Shift",
+        "city": ""
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

@@ -1,0 +1,70 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Night Shift Gift Co.",
+    "theme_version": "1.0.0",
+    "theme_author": "Go-To Gifting LLC",
+    "theme_documentation_url": "https://github.com/jgrasty123/Night-Shift-Gifts",
+    "theme_support_url": "https://github.com/jgrasty123/Night-Shift-Gifts/issues"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo",
+        "info": "Optional. Falls back to the wordmark text with a moon icon."
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      },
+      {
+        "type": "text",
+        "id": "wordmark",
+        "label": "Wordmark text",
+        "default": "Night Shift Gift Co."
+      }
+    ]
+  },
+  {
+    "name": "Store notices",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Display only. Shipping eligibility, age verification and adult signature are enforced at checkout, never by this copy. Leave a notice blank to hide it."
+      },
+      {
+        "type": "text",
+        "id": "age_notice",
+        "label": "Age notice (footer)",
+        "info": "Only if baskets containing alcohol sell on this store."
+      },
+      {
+        "type": "textarea",
+        "id": "shipping_notice",
+        "label": "Shipping notice",
+        "default": "Shipping eligibility is confirmed at checkout."
+      },
+      {
+        "type": "text",
+        "id": "signature_notice",
+        "label": "Signature notice (cart)",
+        "info": "Only if an adult signature applies to some orders."
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_cart_note",
+        "label": "Enable cart note",
+        "default": false
+      }
+    ]
+  }
+]
