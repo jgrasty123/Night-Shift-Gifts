@@ -1,0 +1,7 @@
+Handle,Command,Title,Body HTML,Sort Order,Published,Must Match,Rule: Product Column,Rule: Relation,Rule: Condition
+gift-baskets,NEW,Gift Baskets,,best-selling,TRUE,all conditions,tag,equals,gift-basket
+new-moms,NEW,Gifts for New Moms,,best-selling,TRUE,all conditions,tag,equals,for:new-moms
+new-dads,NEW,Gifts for New Dads,,best-selling,TRUE,all conditions,tag,equals,for:new-dads
+baby-shower,NEW,Baby Shower Gifts,,best-selling,TRUE,all conditions,tag,equals,for:baby-shower
+push-presents,NEW,Push Presents,,best-selling,TRUE,all conditions,tag,equals,for:push-presents
+booze-free,NEW,Booze-Free Gift Baskets,,best-selling,TRUE,all conditions,tag,equals,booze-free-option

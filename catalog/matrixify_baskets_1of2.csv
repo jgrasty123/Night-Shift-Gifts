@@ -1,0 +1,42 @@
+Handle,Command,Title,Body HTML,Vendor,Type,Tags,Tags Command,Status,Published,Published Scope,Option1 Name,Option1 Value,Variant Command,Variant Position,Variant SKU,Variant Price,Variant Compare At Price,Variant Taxable,Variant Requires Shipping,Variant Inventory Tracker,Variant Inventory Policy,Metafield: custom.whats_inside [list.single_line_text_field],Metafield: custom.lil_mil_components [list.single_line_text_field]
+midnight-toast-push-present,NEW,Midnight Toast — Push Present Gift Set,"<p>For the one who did the hard part. A toast for the first quiet minute after the big day, whether that's 2pm or 2am.</p>",Night Shift Gift Co.,Gift Basket,"gift-basket, night-shift, needs-pricing, needs-photos, for:push-presents, for:new-moms, booze-free-option, lm:leash",REPLACE,Draft,FALSE,global,Version,Booze-free,MERGE,1,NS-001,0.00,,TRUE,TRUE,shopify,deny,"Sparkling cider (booze-free) or champagne
+Engraved flute
+Luxe chocolate bar
+Silk sleep mask
+Stroller Saver stroller safety leash",SA-003 x1 — Stroller Saver stroller safety leash
+midnight-toast-push-present,,,,,,,,,,,Version,With champagne,MERGE,2,NS-001-ALC,0.00,,TRUE,TRUE,shopify,deny,,
+off-the-clock-new-mom-gift,NEW,Off the Clock — Gifts for New Moms (Not for the Baby),"<p>Everyone brings something for the baby. This one is for her: a small, deliberate break from the night shift.</p>",Night Shift Gift Co.,Gift Basket,"gift-basket, night-shift, needs-pricing, needs-photos, for:new-moms, booze-free-option, lm:leash",REPLACE,Draft,FALSE,global,Version,Booze-free,MERGE,1,NS-002,0.00,,TRUE,TRUE,shopify,deny,"Spa set
+Chocolate
+Cozy socks
+Candle
+Stroller Saver stroller safety leash",SA-003 x1 — Stroller Saver stroller safety leash
+off-the-clock-new-mom-gift,,,,,,,,,,,Version,With wine,MERGE,2,NS-002-ALC,0.00,,TRUE,TRUE,shopify,deny,,
+recovery-shift-postpartum-care-package,NEW,Recovery Shift — Postpartum Care Package,"<p>The weeks after birth are a shift of their own. Comfort basics for the recovery, packed so she doesn't have to think about any of it.</p>",Night Shift Gift Co.,Gift Basket,"gift-basket, night-shift, needs-pricing, needs-photos, for:new-moms, booze-free-option, booze-free, lm:leash",REPLACE,Draft,FALSE,global,Title,Default Title,MERGE,1,NS-003,0.00,,TRUE,TRUE,shopify,deny,"Soft throw or robe
+Lip balm
+Dry shampoo
+Large water tumbler
+Snacks
+Stroller Saver stroller safety leash",SA-003 x1 — Stroller Saver stroller safety leash
+the-3am-feed-new-mom-gift-basket,NEW,The 3AM Feed — New Mom Gift Basket,<p>Everything within one arm's reach for the feeds nobody else sees. Snacks you can eat with one hand and a light that won't wake anyone.</p>,Night Shift Gift Co.,Gift Basket,"gift-basket, night-shift, needs-pricing, needs-photos, for:new-moms, for:baby-shower, booze-free-option, booze-free, lm:clips",REPLACE,Draft,FALSE,global,Title,Default Title,MERGE,1,NS-004,0.00,,TRUE,TRUE,shopify,deny,"One-handed snacks
+Lactation cookies
+Insulated tumbler
+Night-light
+Stroller clips (2-pack)",SA-002 x1 — Stroller clips (2-pack)
+before-the-night-shift-mom-to-be-gift-box,NEW,Before the Night Shift — Mom-to-Be Gift Box,"<p>For the last calm stretch before baby arrives. Pampering she can use now, and a bag she'll carry every day after.</p>",Night Shift Gift Co.,Gift Basket,"gift-basket, night-shift, needs-pricing, needs-photos, for:new-moms, for:baby-shower, booze-free-option, booze-free, lm:tote",REPLACE,Draft,FALSE,global,Title,Default Title,MERGE,1,NS-005,0.00,,TRUE,TRUE,shopify,deny,"Belly butter
+Pregnancy-safe spa items
+Zero-proof mocktail kit
+Cozy socks
+Tot Tote stroller organizer & crossbody bag",SA-005 x1 — Tot Tote stroller organizer & crossbody bag
+graveyard-shift-survival-kit-new-dad-gift,NEW,Graveyard Shift Survival Kit — New Dad Gift,<p>Fuel and gear for the new guy on the graveyard shift. Snacks for the 3am wake-ups and the stroller kit he'll actually use.</p>,Night Shift Gift Co.,Gift Basket,"gift-basket, night-shift, needs-pricing, needs-photos, for:new-dads, booze-free-option, lm:clips,lm:belt,lm:tote",REPLACE,Draft,FALSE,global,Version,Booze-free,MERGE,1,NS-006,0.00,,TRUE,TRUE,shopify,deny,"Jerky
+Craft root beer (booze-free) or craft beer
+Stroller clips (2-pack)
+Car seat travel belt
+Tot Tote stroller organizer & crossbody bag","SA-002 x1 — Stroller clips (2-pack)
+TA-001 x1 — Car seat travel belt
+SA-005 x1 — Tot Tote stroller organizer & crossbody bag"
+graveyard-shift-survival-kit-new-dad-gift,,,,,,,,,,,Version,With craft beer,MERGE,2,NS-006-ALC,0.00,,TRUE,TRUE,shopify,deny,,
+nightcap-first-time-dad-gift,NEW,Nightcap — First-Time Dad Gift,"<p>One good drink for the end of a long first week. Coffee or whiskey, his call, poured in a glass with the year the family grew.</p>",Night Shift Gift Co.,Gift Basket,"gift-basket, night-shift, needs-pricing, needs-photos, for:new-dads, booze-free-option, lm:leash",REPLACE,Draft,FALSE,global,Version,Booze-free,MERGE,1,NS-007,0.00,,TRUE,TRUE,shopify,deny,"Craft coffee (booze-free) or whiskey
+Engraved rocks glass
+Jerky
+Stroller Saver stroller safety leash",SA-003 x1 — Stroller Saver stroller safety leash
+nightcap-first-time-dad-gift,,,,,,,,,,,Version,With whiskey,MERGE,2,NS-007-ALC,0.00,,TRUE,TRUE,shopify,deny,,

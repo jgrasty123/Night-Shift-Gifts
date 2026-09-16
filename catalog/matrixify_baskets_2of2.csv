@@ -1,0 +1,32 @@
+Handle,Command,Title,Body HTML,Vendor,Type,Tags,Tags Command,Status,Published,Published Scope,Option1 Name,Option1 Value,Variant Command,Variant Position,Variant SKU,Variant Price,Variant Compare At Price,Variant Taxable,Variant Requires Shipping,Variant Inventory Tracker,Variant Inventory Policy,Metafield: custom.whats_inside [list.single_line_text_field],Metafield: custom.lil_mil_components [list.single_line_text_field]
+night-shift-dad-diaper-duty-gift-pack,NEW,Night Shift Dad — Diaper Duty Gift Pack,"<p>A dad-proof diaper bag setup that clips to the stroller and slings over a shoulder, plus the coffee to get through the handoff.</p>",Night Shift Gift Co.,Gift Basket,"gift-basket, night-shift, needs-pricing, needs-photos, for:new-dads, for:baby-shower, booze-free-option, booze-free, lm:tote,lm:clips",REPLACE,Draft,FALSE,global,Title,Default Title,MERGE,1,NS-008,0.00,,TRUE,TRUE,shopify,deny,"Tot Tote stroller organizer & crossbody bag
+Stroller clips (2-pack)
+Coffee
+Snacks","SA-005 x1 — Tot Tote stroller organizer & crossbody bag
+SA-002 x1 — Stroller clips (2-pack)"
+lights-out-date-night-new-parents-gift-basket,NEW,Lights Out Date Night — New Parents Gift Basket,"<p>A night in for two, once the baby is finally down. Everything for a date that doesn't require a sitter or leaving the couch.</p>",Night Shift Gift Co.,Gift Basket,"gift-basket, night-shift, needs-pricing, needs-photos, for:new-moms, for:new-dads, booze-free-option, lm:leash",REPLACE,Draft,FALSE,global,Version,Booze-free,MERGE,1,NS-009,0.00,,TRUE,TRUE,shopify,deny,"Sparkling juice (booze-free) or wine
+Two glasses
+Gourmet snacks
+Card game
+Stroller Saver stroller safety leash",SA-003 x1 — Stroller Saver stroller safety leash
+lights-out-date-night-new-parents-gift-basket,,,,,,,,,,,Version,With wine,MERGE,2,NS-009-ALC,0.00,,TRUE,TRUE,shopify,deny,,
+the-morning-after-new-parents-coffee-gift-box,NEW,The Morning After — New Parents Coffee Gift Box,"<p>For the morning after the longest night. Two mugs and good coffee, for whoever is on the early shift.</p>",Night Shift Gift Co.,Gift Basket,"gift-basket, night-shift, needs-pricing, needs-photos, for:new-moms, for:new-dads, booze-free-option, booze-free, lm:leash",REPLACE,Draft,FALSE,global,Title,Default Title,MERGE,1,NS-010,0.00,,TRUE,TRUE,shopify,deny,"Craft coffee
+Two mugs
+Breakfast snacks
+Stroller Saver stroller safety leash",SA-003 x1 — Stroller Saver stroller safety leash
+clock-in-kit-baby-shower-gift-basket,NEW,Clock-In Kit — Baby Shower Gift Basket,"<p>The practical shower gift: the stroller and travel kit new parents reach for every single day, ready before their first shift starts.</p>",Night Shift Gift Co.,Gift Basket,"gift-basket, night-shift, needs-pricing, needs-photos, for:baby-shower, booze-free-option, booze-free, lm:tote,lm:leash,lm:clips,lm:belt",REPLACE,Draft,FALSE,global,Title,Default Title,MERGE,1,NS-011,0.00,,TRUE,TRUE,shopify,deny,"Tot Tote stroller organizer & crossbody bag
+Stroller Saver stroller safety leash
+Stroller clips (2-pack)
+Car seat travel belt","SA-005 x1 — Tot Tote stroller organizer & crossbody bag
+SA-003 x1 — Stroller Saver stroller safety leash
+SA-002 x1 — Stroller clips (2-pack)
+TA-001 x1 — Car seat travel belt"
+midnight-snack-babys-first-feeding-set,NEW,Midnight Snack — Baby's First Feeding Set,"<p>For when the milk-only days end. Soft silicone plates and a cup that grows with them, plus a book for the table.</p>",Night Shift Gift Co.,Gift Basket,"gift-basket, night-shift, needs-pricing, needs-photos, for:baby-shower, booze-free-option, booze-free, lm:plates,lm:cup",REPLACE,Draft,FALSE,global,Title,Default Title,MERGE,1,NS-012,0.00,,TRUE,TRUE,shopify,deny,"Silicone baby & toddler plates, set of 2
+Silicone baby & toddler cup
+Bibs
+Board book","1010 x1 — Silicone baby & toddler plates, set of 2
+2000 x1 — Silicone baby & toddler cup"
+double-shift-mom-and-baby-gift-set,NEW,Double Shift — Mom & Baby Gift Set,"<p>Half for mom, half for baby, because they're both working the same shift.</p>",Night Shift Gift Co.,Gift Basket,"gift-basket, night-shift, needs-pricing, needs-photos, for:new-moms, for:baby-shower, booze-free-option, booze-free, lm:cup,lm:leash",REPLACE,Draft,FALSE,global,Title,Default Title,MERGE,1,NS-013,0.00,,TRUE,TRUE,shopify,deny,"Pampering items for mom
+Silicone baby & toddler cup
+Stroller Saver stroller safety leash","2000 x1 — Silicone baby & toddler cup
+SA-003 x1 — Stroller Saver stroller safety leash"
