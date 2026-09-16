@@ -40,8 +40,10 @@ After that, the work is pricing (fill costs in the bundle workbook), images (Cha
 | `build_catalog.py` | Source of truth for basket titles, copy, tags, What's inside. Regenerates the three CSVs |
 | `matrixify_baskets_1of2.csv` / `2of2.csv` | Products import (split for the Matrixify per-job product cap) |
 | `matrixify_collections.csv` | 6 smart collections on tags |
+| `recipes.json` | **Source of truth for basket contents and packaging** (white or black, small or large) |
+| `build_bundles.py` | Regenerates `nightshift_MASTER_bundles.xlsx` from recipes.json |
 | `nightshift_MASTER_bundles.xlsx` | Recipes, SumTracker upload, new components, price worksheet, open flags — same layout as the Bounty master |
-| `build_prompts.py` | Reads the workbook recipes and writes `image_prompts.md` |
+| `build_prompts.py` | Reads recipes.json and writes `image_prompts.md` |
 | `image_prompts.md` | 18 ChatGPT prompts (13 baskets + 5 alcohol versions) |
 | `README.md` | Import order, tags, launch checklist |
 
@@ -89,6 +91,8 @@ Booze-free is always variant 1 (default). Alcohol variants are `NS-00x-ALC`.
 
 ## Decisions made
 
+- **Packaging (Sep 16):** white box + white fill for mom, baby, shower and couples baskets; black box + black fill for dad baskets NS-006/007/008. No gold tissue, no custom Night Shift box. White box = PKG-100; small black = PKG-082. White fill, black fill and a large black box are stocked but their SKUs weren't found — placeholders PKG-FILL-WHITE, PKG-FILL-BLACK, PKG-BOX-BLACK-L to replace in recipes.json.
+
 - Store name **Night Shift Gift Co.** James confirmed availability; trademark clearance still recommended (Night Shift Brewing holds beer-class marks).
 - Every basket carries a leash, clips or Tot Tote to move stock.
 - NS-001 alcohol version is "With sparkling wine" (WINE-013 Mumm Brut Prestige), not champagne.
@@ -107,7 +111,7 @@ Booze-free is always variant 1 (default). Alcohol variants are `NS-00x-ALC`.
 
 **Needs James**
 1. Approve starting job `746994786`, then files 2 and collections.
-2. Fill costs for the 22 new components in `nightshift_MASTER_bundles.xlsx` → New Components tab. Start with PKG-NS-BOX, BOX-L, TISSUE, CARD (used by every basket).
+2. Give the real SKUs for white fill, black fill and the large black box (and whether PKG-100 fits the Tot Tote baskets). Then fill costs for the remaining new components in the New Components tab.
 3. Set prices in the Price Worksheet, then push prices to the products.
 4. Which store sells alcohol baskets. Until then ALC variants stay unsellable.
 5. Real SKUs for BEER-TBD (Brew Hunters) and AL-TBD-WHISKEY (BroBasket).

@@ -19,7 +19,8 @@ python3 catalog/build_catalog.py
 | `matrixify_baskets_2of2.csv` | Products | Baskets NS-008 to NS-013 |
 | `matrixify_collections.csv` | Smart Collections | `gift-baskets`, `new-moms`, `new-dads`, `baby-shower`, `push-presents`, `booze-free` — the handles the theme expects |
 | `image_prompts.md` | — | ChatGPT prompts generated from the recipes by `build_prompts.py` |
-| `nightshift_MASTER_bundles.xlsx` | SumTracker (Upload tab) | Recipes, component costs, price worksheet — same layout as bounty_MASTER_bundles |
+| `recipes.json` | — | Source of truth: contents + packaging per basket |
+| `nightshift_MASTER_bundles.xlsx` | SumTracker (Upload tab) | Built by `build_bundles.py` — recipes, costs, price worksheet |
 
 Split in two because the Matrixify plan caps products per job.
 

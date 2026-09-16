@@ -1,0 +1,1340 @@
+[
+ {
+  "sku": "NS-001",
+  "name": "Midnight Toast — Push Present Gift Set",
+  "variant": "Booze-free",
+  "packaging": "white",
+  "large_box": false,
+  "items": [
+   {
+    "sku": "AL-302",
+    "name": "Fre Sparkling Brut Alcohol Removed",
+    "qty": 1,
+    "cost": 9,
+    "status": "Existing"
+   },
+   {
+    "sku": "ACC-NS-FLUTE",
+    "name": "Champagne flute (engravable)",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "FD-041",
+    "name": "Ghirardelli Dark Chocolate Bars",
+    "qty": 1,
+    "cost": 3,
+    "status": "Existing"
+   },
+   {
+    "sku": "ACC-NS-MASK",
+    "name": "Silk sleep mask",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "SA-003",
+    "name": "The Stroller Saver - Stroller Safety Leash",
+    "qty": 1,
+    "cost": 4,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "PKG-100",
+    "name": "White Bounty Basket Box",
+    "qty": 1,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-FILL-WHITE",
+    "name": "White crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-005",
+    "name": "Small Backer Board",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-073",
+    "name": "Small Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-001-ALC",
+  "name": "Midnight Toast — Push Present Gift Set",
+  "variant": "With sparkling wine",
+  "packaging": "white",
+  "large_box": false,
+  "items": [
+   {
+    "sku": "ACC-NS-FLUTE",
+    "name": "Champagne flute (engravable)",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "FD-041",
+    "name": "Ghirardelli Dark Chocolate Bars",
+    "qty": 1,
+    "cost": 3,
+    "status": "Existing"
+   },
+   {
+    "sku": "ACC-NS-MASK",
+    "name": "Silk sleep mask",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "SA-003",
+    "name": "The Stroller Saver - Stroller Safety Leash",
+    "qty": 1,
+    "cost": 4,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "WINE-013",
+    "name": "Mumm Sparkling Brut Prestige 750ml",
+    "qty": 1,
+    "cost": 16.78,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-100",
+    "name": "White Bounty Basket Box",
+    "qty": 1,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-FILL-WHITE",
+    "name": "White crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-005",
+    "name": "Small Backer Board",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-073",
+    "name": "Small Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-002",
+  "name": "Off the Clock — Gifts for New Moms (Not for the Baby)",
+  "variant": "Booze-free",
+  "packaging": "white",
+  "large_box": false,
+  "items": [
+   {
+    "sku": "ACC-201",
+    "name": "Flower Market Rose Bath Bomb",
+    "qty": 1,
+    "cost": 4,
+    "status": "Existing"
+   },
+   {
+    "sku": "ACC-203",
+    "name": "Biodance Bio-Collagen Facemask",
+    "qty": 1,
+    "cost": 2.5,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-034",
+    "name": "Ferrero Rocher 3pc",
+    "qty": 2,
+    "cost": 1.42,
+    "status": "Existing"
+   },
+   {
+    "sku": "ACC-NS-SOCKS",
+    "name": "Cozy socks",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "ACC-SPA-04",
+    "name": "Soy Wax Candle — Lavender Fields",
+    "qty": 1,
+    "cost": 6,
+    "status": "Existing"
+   },
+   {
+    "sku": "SA-003",
+    "name": "The Stroller Saver - Stroller Safety Leash",
+    "qty": 1,
+    "cost": 4,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "PKG-100",
+    "name": "White Bounty Basket Box",
+    "qty": 1,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-FILL-WHITE",
+    "name": "White crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-005",
+    "name": "Small Backer Board",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-073",
+    "name": "Small Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-002-ALC",
+  "name": "Off the Clock — Gifts for New Moms (Not for the Baby)",
+  "variant": "With wine",
+  "packaging": "white",
+  "large_box": false,
+  "items": [
+   {
+    "sku": "ACC-201",
+    "name": "Flower Market Rose Bath Bomb",
+    "qty": 1,
+    "cost": 4,
+    "status": "Existing"
+   },
+   {
+    "sku": "ACC-203",
+    "name": "Biodance Bio-Collagen Facemask",
+    "qty": 1,
+    "cost": 2.5,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-034",
+    "name": "Ferrero Rocher 3pc",
+    "qty": 2,
+    "cost": 1.42,
+    "status": "Existing"
+   },
+   {
+    "sku": "ACC-NS-SOCKS",
+    "name": "Cozy socks",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "ACC-SPA-04",
+    "name": "Soy Wax Candle — Lavender Fields",
+    "qty": 1,
+    "cost": 6,
+    "status": "Existing"
+   },
+   {
+    "sku": "SA-003",
+    "name": "The Stroller Saver - Stroller Safety Leash",
+    "qty": 1,
+    "cost": 4,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "WINE-001",
+    "name": "Seaglass Pinot Noir",
+    "qty": 1,
+    "cost": 12.08,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-100",
+    "name": "White Bounty Basket Box",
+    "qty": 1,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-FILL-WHITE",
+    "name": "White crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-005",
+    "name": "Small Backer Board",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-073",
+    "name": "Small Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-003",
+  "name": "Recovery Shift — Postpartum Care Package",
+  "variant": "Default",
+  "packaging": "white",
+  "large_box": true,
+  "items": [
+   {
+    "sku": "ACC-NS-ROBE",
+    "name": "Soft throw or robe",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "ACC-NS-LIPBALM",
+    "name": "Lip balm",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "ACC-NS-DRYSHAMPOO",
+    "name": "Dry shampoo",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "ACC-NS-TUMBLER",
+    "name": "Insulated tumbler",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "FD-119",
+    "name": "Marich Sea Salt Almonds",
+    "qty": 1,
+    "cost": 2.83,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-071",
+    "name": "Nonni's Almond Dark Chocolate Biscoti",
+    "qty": 2,
+    "cost": 0.54,
+    "status": "Existing"
+   },
+   {
+    "sku": "SA-003",
+    "name": "The Stroller Saver - Stroller Safety Leash",
+    "qty": 1,
+    "cost": 4,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "PKG-100",
+    "name": "White Bounty Basket Box",
+    "qty": 1,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-FILL-WHITE",
+    "name": "White crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-002",
+    "name": "Large Backer Boards",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-063",
+    "name": "medium Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-004",
+  "name": "The 3AM Feed — New Mom Gift Basket",
+  "variant": "Default",
+  "packaging": "white",
+  "large_box": false,
+  "items": [
+   {
+    "sku": "FD-119",
+    "name": "Marich Sea Salt Almonds",
+    "qty": 1,
+    "cost": 2.83,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-077",
+    "name": "Popcornopolis Gourmet Flavored Popcorn",
+    "qty": 1,
+    "cost": 1.5,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-NS-LACTATION",
+    "name": "Lactation cookies",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "ACC-NS-TUMBLER",
+    "name": "Insulated tumbler",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "ACC-NS-NIGHTLIGHT",
+    "name": "Portable night-light",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "SA-002",
+    "name": "Stroller Clips for Bags - 2 Pack",
+    "qty": 1,
+    "cost": 5,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "PKG-100",
+    "name": "White Bounty Basket Box",
+    "qty": 1,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-FILL-WHITE",
+    "name": "White crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-005",
+    "name": "Small Backer Board",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-073",
+    "name": "Small Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-005",
+  "name": "Before the Night Shift — Mom-to-Be Gift Box",
+  "variant": "Default",
+  "packaging": "white",
+  "large_box": true,
+  "items": [
+   {
+    "sku": "ACC-NS-BELLYBUTTER",
+    "name": "Belly butter",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "ACC-203",
+    "name": "Biodance Bio-Collagen Facemask",
+    "qty": 1,
+    "cost": 2.5,
+    "status": "Existing"
+   },
+   {
+    "sku": "MXR-NS-MOCKTAIL",
+    "name": "Zero-proof mocktail kit",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "ACC-NS-SOCKS",
+    "name": "Cozy socks",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "SA-005",
+    "name": "Tot Tote Stroller Organizer and Crossbody Diaper Bag",
+    "qty": 1,
+    "cost": 7.23,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "PKG-100",
+    "name": "White Bounty Basket Box",
+    "qty": 1,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-FILL-WHITE",
+    "name": "White crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-002",
+    "name": "Large Backer Boards",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-063",
+    "name": "medium Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-006",
+  "name": "Graveyard Shift Survival Kit — New Dad Gift",
+  "variant": "Booze-free",
+  "packaging": "black",
+  "large_box": true,
+  "items": [
+   {
+    "sku": "FD-026",
+    "name": "Country Archer Original Beef Jerky",
+    "qty": 2,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "MXR-NS-ROOTBEER",
+    "name": "Craft root beer 12oz",
+    "qty": 2,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "SA-002",
+    "name": "Stroller Clips for Bags - 2 Pack",
+    "qty": 1,
+    "cost": 5,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "TA-001",
+    "name": "Car Seat Travel Belt for Luggage",
+    "qty": 1,
+    "cost": 3.52,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "SA-005",
+    "name": "Tot Tote Stroller Organizer and Crossbody Diaper Bag",
+    "qty": 1,
+    "cost": 7.23,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "PKG-BOX-BLACK-L",
+    "name": "Large black gift box (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-FILL-BLACK",
+    "name": "Black crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-002",
+    "name": "Large Backer Boards",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-063",
+    "name": "medium Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-006-ALC",
+  "name": "Graveyard Shift Survival Kit — New Dad Gift",
+  "variant": "With craft beer",
+  "packaging": "black",
+  "large_box": true,
+  "items": [
+   {
+    "sku": "FD-026",
+    "name": "Country Archer Original Beef Jerky",
+    "qty": 2,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "SA-002",
+    "name": "Stroller Clips for Bags - 2 Pack",
+    "qty": 1,
+    "cost": 5,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "TA-001",
+    "name": "Car Seat Travel Belt for Luggage",
+    "qty": 1,
+    "cost": 3.52,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "SA-005",
+    "name": "Tot Tote Stroller Organizer and Crossbody Diaper Bag",
+    "qty": 1,
+    "cost": 7.23,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "BEER-TBD",
+    "name": "Craft beer (pick Brew Hunters SKU)",
+    "qty": 2,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "PKG-BOX-BLACK-L",
+    "name": "Large black gift box (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-FILL-BLACK",
+    "name": "Black crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-002",
+    "name": "Large Backer Boards",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-063",
+    "name": "medium Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-007",
+  "name": "Nightcap — First-Time Dad Gift",
+  "variant": "Booze-free",
+  "packaging": "black",
+  "large_box": false,
+  "items": [
+   {
+    "sku": "FD-086",
+    "name": "Santa Barbara Roasting Co Coffee",
+    "qty": 1,
+    "cost": 3.1,
+    "status": "Existing"
+   },
+   {
+    "sku": "ACC-025",
+    "name": "Rocks Glass",
+    "qty": 1,
+    "cost": 1.42,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-026",
+    "name": "Country Archer Original Beef Jerky",
+    "qty": 1,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "SA-003",
+    "name": "The Stroller Saver - Stroller Safety Leash",
+    "qty": 1,
+    "cost": 4,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "PKG-082",
+    "name": "Small Black Box",
+    "qty": 1,
+    "cost": 1.0,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-FILL-BLACK",
+    "name": "Black crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-005",
+    "name": "Small Backer Board",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-073",
+    "name": "Small Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-007-ALC",
+  "name": "Nightcap — First-Time Dad Gift",
+  "variant": "With whiskey",
+  "packaging": "black",
+  "large_box": false,
+  "items": [
+   {
+    "sku": "ACC-025",
+    "name": "Rocks Glass",
+    "qty": 1,
+    "cost": 1.42,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-026",
+    "name": "Country Archer Original Beef Jerky",
+    "qty": 1,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "SA-003",
+    "name": "The Stroller Saver - Stroller Safety Leash",
+    "qty": 1,
+    "cost": 4,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "AL-TBD-WHISKEY",
+    "name": "Whiskey (pick BroBasket SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "PKG-082",
+    "name": "Small Black Box",
+    "qty": 1,
+    "cost": 1.0,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-FILL-BLACK",
+    "name": "Black crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-005",
+    "name": "Small Backer Board",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-073",
+    "name": "Small Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-008",
+  "name": "Night Shift Dad — Diaper Duty Gift Pack",
+  "variant": "Default",
+  "packaging": "black",
+  "large_box": true,
+  "items": [
+   {
+    "sku": "SA-005",
+    "name": "Tot Tote Stroller Organizer and Crossbody Diaper Bag",
+    "qty": 1,
+    "cost": 7.23,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "SA-002",
+    "name": "Stroller Clips for Bags - 2 Pack",
+    "qty": 1,
+    "cost": 5,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "FD-005",
+    "name": "Caribbean Coffee",
+    "qty": 1,
+    "cost": 5,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-077",
+    "name": "Popcornopolis Gourmet Flavored Popcorn",
+    "qty": 1,
+    "cost": 1.5,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-081",
+    "name": "Packs of Snyder’s Pretzels",
+    "qty": 2,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-BOX-BLACK-L",
+    "name": "Large black gift box (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-FILL-BLACK",
+    "name": "Black crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-002",
+    "name": "Large Backer Boards",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-063",
+    "name": "medium Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-009",
+  "name": "Lights Out Date Night — New Parents Gift Basket",
+  "variant": "Booze-free",
+  "packaging": "white",
+  "large_box": false,
+  "items": [
+   {
+    "sku": "AL-302",
+    "name": "Fre Sparkling Brut Alcohol Removed",
+    "qty": 1,
+    "cost": 9,
+    "status": "Existing"
+   },
+   {
+    "sku": "ACC-033",
+    "name": "Wine Glass",
+    "qty": 2,
+    "cost": 2,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-062",
+    "name": "Marich Dark Chocolate Blueberries",
+    "qty": 1,
+    "cost": 2.83,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-065",
+    "name": "Marich Milk Chocolate English Toffee Caramels",
+    "qty": 1,
+    "cost": 2.83,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-077",
+    "name": "Popcornopolis Gourmet Flavored Popcorn",
+    "qty": 1,
+    "cost": 1.5,
+    "status": "Existing"
+   },
+   {
+    "sku": "ACC-GAME-CARDS",
+    "name": "Card / Mini Game Set",
+    "qty": 1,
+    "cost": null,
+    "status": "Placeholder - not in SumTracker"
+   },
+   {
+    "sku": "SA-003",
+    "name": "The Stroller Saver - Stroller Safety Leash",
+    "qty": 1,
+    "cost": 4,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "PKG-100",
+    "name": "White Bounty Basket Box",
+    "qty": 1,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-FILL-WHITE",
+    "name": "White crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-005",
+    "name": "Small Backer Board",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-073",
+    "name": "Small Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-009-ALC",
+  "name": "Lights Out Date Night — New Parents Gift Basket",
+  "variant": "With wine",
+  "packaging": "white",
+  "large_box": false,
+  "items": [
+   {
+    "sku": "ACC-033",
+    "name": "Wine Glass",
+    "qty": 2,
+    "cost": 2,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-062",
+    "name": "Marich Dark Chocolate Blueberries",
+    "qty": 1,
+    "cost": 2.83,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-065",
+    "name": "Marich Milk Chocolate English Toffee Caramels",
+    "qty": 1,
+    "cost": 2.83,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-077",
+    "name": "Popcornopolis Gourmet Flavored Popcorn",
+    "qty": 1,
+    "cost": 1.5,
+    "status": "Existing"
+   },
+   {
+    "sku": "ACC-GAME-CARDS",
+    "name": "Card / Mini Game Set",
+    "qty": 1,
+    "cost": null,
+    "status": "Placeholder - not in SumTracker"
+   },
+   {
+    "sku": "SA-003",
+    "name": "The Stroller Saver - Stroller Safety Leash",
+    "qty": 1,
+    "cost": 4,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "WINE-001",
+    "name": "Seaglass Pinot Noir",
+    "qty": 1,
+    "cost": 12.08,
+    "status": "Existing"
+   },
+   {
+    "sku": "ACC-034",
+    "name": "Wine Opener",
+    "qty": 1,
+    "cost": 2,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-100",
+    "name": "White Bounty Basket Box",
+    "qty": 1,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-FILL-WHITE",
+    "name": "White crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-005",
+    "name": "Small Backer Board",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-073",
+    "name": "Small Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-010",
+  "name": "The Morning After — New Parents Coffee Gift Box",
+  "variant": "Default",
+  "packaging": "white",
+  "large_box": false,
+  "items": [
+   {
+    "sku": "FD-086",
+    "name": "Santa Barbara Roasting Co Coffee",
+    "qty": 1,
+    "cost": 3.1,
+    "status": "Existing"
+   },
+   {
+    "sku": "ACC-MUG-PAIR",
+    "name": "Ceramic Mug Pair",
+    "qty": 1,
+    "cost": null,
+    "status": "Placeholder - not in SumTracker"
+   },
+   {
+    "sku": "FD-071",
+    "name": "Nonni's Almond Dark Chocolate Biscoti",
+    "qty": 2,
+    "cost": 0.54,
+    "status": "Existing"
+   },
+   {
+    "sku": "FD-062",
+    "name": "Marich Dark Chocolate Blueberries",
+    "qty": 1,
+    "cost": 2.83,
+    "status": "Existing"
+   },
+   {
+    "sku": "SA-003",
+    "name": "The Stroller Saver - Stroller Safety Leash",
+    "qty": 1,
+    "cost": 4,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "PKG-100",
+    "name": "White Bounty Basket Box",
+    "qty": 1,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-FILL-WHITE",
+    "name": "White crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-005",
+    "name": "Small Backer Board",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-073",
+    "name": "Small Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-011",
+  "name": "Clock-In Kit — Baby Shower Gift Basket",
+  "variant": "Default",
+  "packaging": "white",
+  "large_box": true,
+  "items": [
+   {
+    "sku": "SA-005",
+    "name": "Tot Tote Stroller Organizer and Crossbody Diaper Bag",
+    "qty": 1,
+    "cost": 7.23,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "SA-003",
+    "name": "The Stroller Saver - Stroller Safety Leash",
+    "qty": 1,
+    "cost": 4,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "SA-002",
+    "name": "Stroller Clips for Bags - 2 Pack",
+    "qty": 1,
+    "cost": 5,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "TA-001",
+    "name": "Car Seat Travel Belt for Luggage",
+    "qty": 1,
+    "cost": 3.52,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "PKG-100",
+    "name": "White Bounty Basket Box",
+    "qty": 1,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-FILL-WHITE",
+    "name": "White crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-002",
+    "name": "Large Backer Boards",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-063",
+    "name": "medium Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-012",
+  "name": "Midnight Snack — Baby's First Feeding Set",
+  "variant": "Default",
+  "packaging": "white",
+  "large_box": false,
+  "items": [
+   {
+    "sku": "1010",
+    "name": "Baby & Toddler Silicone Plates Set of 2 - Black",
+    "qty": 1,
+    "cost": 11.11,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "2000",
+    "name": "Silicone Baby & Toddler Cup - Black",
+    "qty": 1,
+    "cost": 6.6,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "ACC-NS-BIBS",
+    "name": "Baby bibs (2pk)",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "ACC-NS-BOARDBOOK",
+    "name": "Baby board book",
+    "qty": 1,
+    "cost": null,
+    "status": "NEW - create SKU"
+   },
+   {
+    "sku": "PKG-100",
+    "name": "White Bounty Basket Box",
+    "qty": 1,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-FILL-WHITE",
+    "name": "White crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-005",
+    "name": "Small Backer Board",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-073",
+    "name": "Small Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ },
+ {
+  "sku": "NS-013",
+  "name": "Double Shift — Mom & Baby Gift Set",
+  "variant": "Default",
+  "packaging": "white",
+  "large_box": false,
+  "items": [
+   {
+    "sku": "ACC-SPA-04",
+    "name": "Soy Wax Candle — Lavender Fields",
+    "qty": 1,
+    "cost": 6,
+    "status": "Existing"
+   },
+   {
+    "sku": "ACC-203",
+    "name": "Biodance Bio-Collagen Facemask",
+    "qty": 1,
+    "cost": 2.5,
+    "status": "Existing"
+   },
+   {
+    "sku": "2000",
+    "name": "Silicone Baby & Toddler Cup - Black",
+    "qty": 1,
+    "cost": 6.6,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "SA-003",
+    "name": "The Stroller Saver - Stroller Safety Leash",
+    "qty": 1,
+    "cost": 4,
+    "status": "Lil & Mil"
+   },
+   {
+    "sku": "PKG-100",
+    "name": "White Bounty Basket Box",
+    "qty": 1,
+    "cost": 4.58,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-FILL-WHITE",
+    "name": "White crinkle-cut fill (confirm SKU)",
+    "qty": 1,
+    "cost": null,
+    "status": "Confirm SKU"
+   },
+   {
+    "sku": "PKG-005",
+    "name": "Small Backer Board",
+    "qty": 1,
+    "cost": 0.25,
+    "status": "Existing"
+   },
+   {
+    "sku": "PKG-073",
+    "name": "Small Shrink Wrap Bags",
+    "qty": 1,
+    "cost": 0.33,
+    "status": "Existing"
+   }
+  ]
+ }
+]

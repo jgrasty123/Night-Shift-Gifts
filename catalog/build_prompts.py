@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Build ChatGPT image prompts from the real basket recipes.
 
-Reads 'Night Shift Master Bundles' in nightshift_MASTER_bundles.xlsx, so the
-photo shows exactly what the SumTracker recipe packs. Rerun after any recipe
+Reads catalog/recipes.json, so the photo shows exactly what the SumTracker
+recipe packs, in the right box (white for mom/baby/shower, black for dads). Rerun after any recipe
 change:  python3 catalog/build_prompts.py
 """
-import pathlib, collections, openpyxl
+import pathlib, collections, json
 
 HERE = pathlib.Path(__file__).resolve().parent
-WB = HERE / "nightshift_MASTER_bundles.xlsx"
+RECIPES = HERE / "recipes.json"
 
 # How each component should LOOK in the photo, keyed by SKU and quantity.
 # Brand names stay out of the prompt text: image models garble label text and
@@ -62,12 +62,16 @@ LOOK = {
 }
 LIL_MIL = {"SA-003", "SA-002", "SA-005", "TA-001", "2000", "1010"}
 
+BOXES = {
+    "white": "a clean white gift box with its matching white lid leaning against the side, filled with "
+             "white crinkle-cut paper shred (white only, no colored shred, no tissue paper)",
+    "black": "a matte black gift box with its matching black lid leaning against the side, filled with "
+             "black crinkle-cut paper shred (black only, no colored shred, no tissue paper)",
+}
 STYLE = (
-    "Square 1:1 product photo, 2048x2048, overhead three-quarter angle. {box} with its deep "
-    "midnight-blue (#1F2A44) lid leaning against the side, lamplight-gold (#E8B45A) tissue "
-    "paper and gold crinkle-cut paper shred inside. Seamless warm cream (#FAF5EA) background. "
-    "Soft warm light from one side like a bedside lamp at night, gentle shadows. A small card "
-    "tucked in the tissue with a simple crescent moon icon and no other text. Every item clearly "
+    "Square 1:1 product photo, 2048x2048, overhead three-quarter angle. {box}. "
+    "Seamless warm off-white background. Soft warm light from one side like a bedside lamp "
+    "at night, gentle shadows. Every item clearly "
     "visible, not overlapping, arranged neatly in and just in front of the box. Clean, premium, "
     "cozy. No people, no hands. No readable text, brand names or logos on any item; keep labels "
     "plain. No watermark."
@@ -75,20 +79,18 @@ STYLE = (
 
 
 def load():
-    ws = openpyxl.load_workbook(WB, data_only=True)["Night Shift Master Bundles"]
     recipes = collections.OrderedDict()
-    for name, psku, variant, cname, csku, qty, *_ in ws.iter_rows(min_row=2, values_only=True):
-        if not psku:
-            continue
-        recipes.setdefault(psku, {"name": name, "variant": variant, "rows": []})["rows"].append((str(csku), int(qty), cname))
+    for r in json.loads(RECIPES.read_text()):
+        recipes[r["sku"]] = {"name": r["name"], "variant": r["variant"], "packaging": r["packaging"],
+                             "large": r["large_box"],
+                             "rows": [(str(i["sku"]), int(i["qty"]), i["name"]) for i in r["items"]]}
     return recipes
 
 
-def scene(rows):
-    items, refs, large = [], [], False
+def scene(rows, packaging, large):
+    items, refs = [], []
     for sku, qty, cname in rows:
         if sku.startswith("PKG"):
-            large = large or sku == "PKG-NS-BOX-L"
             continue
         look = LOOK.get((sku, qty))
         if not look:
@@ -98,7 +100,8 @@ def scene(rows):
             refs.append(f"{cname} (Lil & Mil, {sku})")
         elif "-NS-" not in sku and "TBD" not in sku:
             refs.append(f"{cname} ({sku})")
-    box = "A large kraft gift box" if large else "A kraft gift box"
+    box = BOXES[packaging]
+    box = ("A large " if large else "A ") + box.split(" ", 1)[1]
     listing = ", ".join(items[:-1]) + ", and " + items[-1] if len(items) > 1 else items[0]
     return listing, refs, box
 
@@ -108,6 +111,8 @@ def main():
     out = ["# Night Shift Gift Co. — ChatGPT image prompts", "",
            "Generated from `nightshift_MASTER_bundles.xlsx`, so each photo shows what the recipe actually packs. "
            "Rerun `python3 catalog/build_prompts.py` after changing a recipe.", "",
+           "**Packaging:** white box + white fill for mom, baby, shower and couples baskets; black box + black fill for the dad baskets. "
+           "If ChatGPT drifts back to gold or colored fill, reply: *\"Box and shred must be solid white (or black) — no gold, no tissue, no colored paper.\"*", "",
            "## How to use", "",
            "1. New ChatGPT chat per basket so the style doesn't drift.",
            "2. **Upload the reference photos listed under each basket first**, then say: "
@@ -123,14 +128,14 @@ def main():
             if row["Variant SKU"]:
                 handles[row["Variant SKU"]] = row["Handle"]
     for psku, rec in r.items():
-        listing, refs, box = scene(rec["rows"])
+        listing, refs, box = scene(rec["rows"], rec["packaging"], rec["large"])
         short = rec["name"].split(" — ")[0]
         alc = psku.endswith("-ALC")
         heading = f"{rec['name']}" + (f" — {rec['variant']} version" if alc else "")
         new = [c for s, q, c in rec["rows"] if "-NS-" in s and not s.startswith("PKG")] + \
               [c for s, q, c in rec["rows"] if "TBD" in s]
         out += [("### " if alc else "## ") + heading, "",
-                f"Handle: `{handles.get(psku, handles.get(psku.replace('-ALC', ''), '?'))}`  ·  SKU `{psku}`", ""]
+                f"Box: **{rec['packaging']} box, {rec['packaging']} fill{' (large)' if rec['large'] else ''}**  ·  Handle: `{handles.get(psku, handles.get(psku.replace('-ALC', ''), '?'))}`  ·  SKU `{psku}`", ""]
         if alc:
             out += ["*Only make this image if you'll sell the alcohol version. Use it as the variant image.*", ""]
         out += ["**Reference photos to upload:** " + ("; ".join(refs) if refs else "none"), ""]
