@@ -19,6 +19,7 @@ python3 catalog/build_catalog.py
 | `matrixify_baskets_2of2.csv` | Products | Baskets NS-008 to NS-013 |
 | `matrixify_collections.csv` | Smart Collections | `gift-baskets`, `new-moms`, `new-dads`, `baby-shower`, `push-presents`, `booze-free` — the handles the theme expects |
 | `image_prompts.md` | — | One ChatGPT prompt per basket, shared style block |
+| `nightshift_MASTER_bundles.xlsx` | SumTracker (Upload tab) | Recipes, component costs, price worksheet — same layout as bounty_MASTER_bundles |
 
 Split in two because the Matrixify plan caps products per job.
 
@@ -46,8 +47,8 @@ price and switch it to Active.
 
 ## Import order
 
-1. Settings → Custom data → Products: create `custom.whats_inside` and
-   `custom.lil_mil_components`, both *List of single line text*.
+1. ~~Create the metafield definitions~~ — done 2026-09-16 via the Admin API
+   (`custom.whats_inside`, `custom.lil_mil_components`).
 2. Import `matrixify_baskets_1of2.csv`, check one product, then `2of2`.
    Confirm the What's inside list came through as separate lines.
 3. Import `matrixify_collections.csv`.

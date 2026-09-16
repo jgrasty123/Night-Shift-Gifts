@@ -22,7 +22,7 @@ Handle: `midnight-toast-push-present`  ·  Lil & Mil photos to upload: Stroller 
 Gift basket product photo for "Midnight Toast". Inside the box: an engraved flute beside a bottle of sparkling cider, a chocolate bar and a folded silk sleep mask, and a coiled black stroller safety wrist leash. Arrange the items so every one is clearly visible and not overlapping. Square 1:1 product photo, 2048x2048. Overhead three-quarter angle. A kraft gift box with a deep midnight-blue (#1F2A44) lid set to one side and warm lamplight-gold (#E8B45A) tissue paper inside. Background: seamless warm cream (#FAF5EA). Soft warm light from one side like a bedside lamp at night, gentle shadows. A small printed card tucked in the tissue with a simple crescent moon icon and no other text. Clean, premium, cozy. No people, no hands, no brand logos or label text on any item, no watermarks.
 ```
 
-*Booze-free version image:* same prompt, and say the bottle is clearly a non-alcoholic sparkling drink or coffee with no alcohol cues. Make a second image only if you plan to sell the "With champagne" version.
+*Booze-free version image:* same prompt, and say the bottle is clearly a non-alcoholic sparkling drink or coffee with no alcohol cues. Make a second image only if you plan to sell the "With sparkling wine" version.
 
 ## Off the Clock — Gifts for New Moms (Not for the Baby)
 

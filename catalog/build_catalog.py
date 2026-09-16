@@ -35,9 +35,9 @@ LM = {
 # sellable until it is decided which store/entity sells alcohol.
 BASKETS = [
     dict(sku="NS-001", handle="midnight-toast-push-present", title="Midnight Toast — Push Present Gift Set",
-         collections=["push-presents", "new-moms"], alc="With champagne",
+         collections=["push-presents", "new-moms"], alc="With sparkling wine",
          lm=["leash"],
-         inside=["Sparkling cider (booze-free) or champagne", "Engraved flute", "Luxe chocolate bar", "Silk sleep mask"],
+         inside=["Sparkling cider (booze-free) or sparkling wine", "Engraved flute", "Luxe chocolate bar", "Silk sleep mask"],
          blurb="For the one who did the hard part. A toast for the first quiet minute after the big day, whether that's 2pm or 2am.",
          scene="an engraved flute beside a bottle of sparkling cider, a chocolate bar and a folded silk sleep mask"),
     dict(sku="NS-002", handle="off-the-clock-new-mom-gift", title="Off the Clock — Gifts for New Moms (Not for the Baby)",
