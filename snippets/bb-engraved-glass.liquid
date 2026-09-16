@@ -1,0 +1,102 @@
+{%- comment -%}
+  ENGRAVED GLASS  (ported from BroBasket / Bounty bb-engraved-glass.liquid)
+
+  Shows when custom.option_set_v2 contains "Engraved Glass" AND the companion
+  product with handle "engraved-glass" exists and is published. That product
+  has two options: "Glass Type" and "Engraving". Always optional ("No glass"
+  is always offered, as on BroBasket after the 2026-05-07 fix).
+
+  Adds the glass variant as its own cart line with:
+    For, Glass Type, Engraving Type, Engraving Text
+
+  Accepts: product
+{%- endcomment -%}
+{%- assign glass_product = all_products['engraved-glass'] -%}
+{%- liquid
+  assign show_glass = false
+  assign option_set = product.metafields.custom.option_set_v2 | metafield_text
+  if option_set contains 'Engraved Glass' and glass_product != blank and glass_product.available
+    assign show_glass = true
+  endif
+-%}
+
+{%- if show_glass -%}
+  {%- assign glass_types = glass_product.options_by_name['Glass Type'].values -%}
+  {%- assign engraving_types = glass_product.options_by_name['Engraving'].values -%}
+  <div class="addon" data-engraved-glass-wrapper data-product-title="{{ product.title | escape }}">
+    <p class="pdp__rowlabel">Add an engraved glass</p>
+    <div class="addon__choices" role="radiogroup" aria-label="Engraved glass">
+      <label class="choice"><input type="radio" name="engraved_glass_type" value="" data-glass-type-radio checked><span>No glass</span></label>
+      {%- for glass in glass_types -%}
+        <label class="choice"><input type="radio" name="engraved_glass_type" value="{{ glass | escape }}" data-glass-type-radio><span>{{ glass }}</span></label>
+      {%- endfor -%}
+    </div>
+
+    <div class="addon__reveal" data-glass-details hidden>
+      <p class="pdp__rowlabel">Engraving style</p>
+      <div class="addon__choices" role="radiogroup" aria-label="Engraving style">
+        {%- for style in engraving_types -%}
+          {%- assign style_price = nil -%}
+          {%- for variant in glass_product.variants -%}
+            {%- if variant.option2 == style -%}{%- assign style_price = variant.price -%}{%- break -%}{%- endif -%}
+          {%- endfor -%}
+          <label class="choice">
+            <input type="radio" name="engraved_glass_engraving" value="{{ style | escape }}" data-glass-style-radio {% if forloop.first %}checked{% endif %}>
+            <span>{{ style }}{% if style_price %} <small>{{ style_price | money }}</small>{% endif %}</span>
+          </label>
+        {%- endfor -%}
+      </div>
+
+      <label class="pdp__rowlabel" for="engraved-glass-text-{{ product.id }}">Engraving text <span class="addon__req">*</span></label>
+      <input type="text" id="engraved-glass-text-{{ product.id }}" name="engraved_glass_text" data-glass-text maxlength="50"
+             placeholder="Initials, a name or a date">
+      <p class="giftnote__count">Up to 50 characters</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+      var variants = [
+        {%- for variant in glass_product.variants -%}
+          { id: {{ variant.id }}, o1: {{ variant.option1 | json }}, o2: {{ variant.option2 | json }}, available: {{ variant.available }} }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ];
+      function init() {
+        var wrapper = document.querySelector('[data-engraved-glass-wrapper]');
+        if (!wrapper) return;
+        var details = wrapper.querySelector('[data-glass-details]');
+        var text = wrapper.querySelector('[data-glass-text]');
+        var title = wrapper.dataset.productTitle;
+        function glass() { var r = wrapper.querySelector('[data-glass-type-radio]:checked'); return r ? r.value : ''; }
+        function style() { var r = wrapper.querySelector('[data-glass-style-radio]:checked'); return r ? r.value : ''; }
+        function variant() {
+          return variants.find(function (v) { return v.o1 === glass() && v.o2 === style() && v.available; });
+        }
+        function sync() {
+          var on = !!glass();
+          details.hidden = !on;
+          if (on) text.setAttribute('required', 'required'); else { text.removeAttribute('required'); text.value = ''; }
+        }
+        wrapper.querySelectorAll('[data-glass-type-radio]').forEach(function (r) { r.addEventListener('change', sync); });
+
+        window.productAddons = window.productAddons || {};
+        window.productAddons.engravedGlass = {
+          getItem: function () {
+            if (!glass()) return null;
+            var v = variant();
+            if (!v) return null;
+            return { id: v.id, properties: { 'For': title, 'Glass Type': glass(), 'Engraving Type': style(), 'Engraving Text': text.value.trim() } };
+          },
+          reset: function () { text.value = ''; },
+          validate: function () {
+            if (!glass()) return true;
+            return !!variant() && text.value.trim().length > 0;
+          }
+        };
+        sync();
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+    })();
+  </script>
+{%- endif -%}

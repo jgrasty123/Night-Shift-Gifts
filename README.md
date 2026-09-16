@@ -124,3 +124,42 @@ Eligibility and age checks happen at checkout, never in theme copy.
 
 No invented reviews, awards, ratings or product claims. The review block stays
 in placeholder mode until a review app supplies real reviews.
+
+## Add-ons: gift card, bottle engraving, engraved glass
+
+Ported from BroBasket / Bounty (`bb-product-addons` and its snippets). Nothing
+is built per product — each add-on appears when **both** are true:
+
+1. The companion product exists at the exact handle, is **Active**, published
+   to the Online Store, and tagged `hidden` (so it never shows in grids or search):
+
+   | Handle | Options | Used by |
+   | --- | --- | --- |
+   | `special-card` | Type (first variant with "Free" in its title is preselected) | Gift card + message |
+   | `engraving` | Engraving | Bottle engraving |
+   | `engraved-glass` | Glass Type, Engraving | Engraved glass |
+
+2. The basket's `custom.option_set_v2` metafield (single line text) contains the
+   trigger word(s):
+
+   | Contains | Shows |
+   | --- | --- |
+   | `Card` | Gift card dropdown + message |
+   | `Engraved Bottle` | Bottle engraving (add `Engraving Mandatory` to require it) |
+   | `Engraved Glass` | Engraved glass picker (always optional) |
+
+Each chosen add-on is added to the cart as **its own line** in the same
+`cart/add.js` call as the basket, with properties `For` (the basket title) plus
+`Message` / `Engraving Text` / `Glass Type` / `Engraving Type`.
+
+Night Shift specifics:
+- **Bottle engraving hides while the "Booze-free" variant is selected** — there
+  is no bottle to engrave — and clears any choice. It appears for the alcohol version.
+- **When the card add-on is showing, the free-text gift message box is hidden**,
+  so a basket never asks for two messages. Without a `special-card` product the
+  old gift message box comes back automatically.
+- Snippets: `bb-product-addons` (handler), `bb-gift-card-message`,
+  `bb-custom-engraving`, `bb-engraved-glass`. After an add-on add, the handler
+  calls `window.NightShift.cartUpdated()` to refresh and open the side cart.
+- Not ported: BroBasket's orphan add-on sweeper (removes an add-on line when its
+  basket is removed from the cart) and the adult-signature fee logic.

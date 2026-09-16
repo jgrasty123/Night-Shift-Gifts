@@ -17,7 +17,7 @@
       {%- if collection.products.size > 0 -%}
         <div class="grid armed">
           {%- for product in collection.products -%}
-            {% render 'product-card', card_product: product %}
+            {%- unless product.tags contains 'hidden' -%}{% render 'product-card', card_product: product %}{%- endunless -%}
           {%- endfor -%}
         </div>
 
