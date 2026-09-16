@@ -23,15 +23,6 @@ Note: the `booze-free` collection matches tag `booze-free-option`, which every b
 
 Next: packaging SKUs + component costs → prices → images → SumTracker recipes (Open items below).
 
---- | --- | --- |
-| 1. Products file 1 of 2 (7 draft baskets, NS-001–NS-007) | **Estimated, not started.** Matrixify job `746994786`, state "Ready to Import", 7 products, all columns recognized incl. both metafields | `matrixify_import_start` job_id 746994786 (Matrixify – Lil and Mil connector). Uploaded file matches repo (MD5 `o1j7kk6D7g2BnZ+2LMDOlg==`) |
-| 2. Check one imported product | — | Confirm Status = Draft, price $0.00, variants, and that **What's inside shows as separate list lines**. If the list came in as one line, fix the format before step 3 |
-| 3. Products file 2 of 2 (NS-008–NS-013) | Not uploaded | `catalog/matrixify_baskets_2of2.csv` |
-| 4. Smart collections | Not uploaded | `catalog/matrixify_collections.csv` (Smart Collections entity) |
-| 5. Theme editor → home → "Shop booze-free" button | — | Link to `/collections/booze-free` |
-
-After that, the work is pricing (fill costs in the bundle workbook), images (ChatGPT prompts), and SumTracker recipes.
-
 ---
 
 ## Where everything lives
