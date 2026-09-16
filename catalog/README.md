@@ -17,7 +17,7 @@ python3 catalog/build_catalog.py
 | --- | --- | --- |
 | `matrixify_baskets_1of2.csv` | Products | Baskets NS-001 to NS-007 |
 | `matrixify_baskets_2of2.csv` | Products | Baskets NS-008 to NS-013 |
-| `matrixify_collections.csv` | Smart Collections | `gift-baskets`, `new-moms`, `new-dads`, `baby-shower`, `push-presents`, `booze-free` — the handles the theme expects |
+| `matrixify_collections.csv` | Smart Collections | `gift-baskets`, `new-moms`, `new-dads`, `baby-shower`, `push-presents` — the handles the theme expects |
 | `image_prompts.md` | — | ChatGPT prompts generated from the recipes by `build_prompts.py` |
 | `recipes.json` | — | Source of truth: contents + packaging per basket |
 | `nightshift_MASTER_bundles.xlsx` | SumTracker (Upload tab) | Built by `build_bundles.py` — recipes, costs, price worksheet |
@@ -53,7 +53,6 @@ price and switch it to Active.
 2. Import `matrixify_baskets_1of2.csv`, check one product, then `2of2`.
    Confirm the What's inside list came through as separate lines.
 3. Import `matrixify_collections.csv`.
-4. Theme editor → home page → "Shop booze-free" button → link `/collections/booze-free`.
 
 ## Tags
 
@@ -61,7 +60,6 @@ price and switch it to Active.
 | --- | --- |
 | `gift-basket` | In the Gift Baskets collection |
 | `for:new-moms` `for:new-dads` `for:baby-shower` `for:push-presents` | Drives the recipient collections |
-| `booze-free-option` | Has a booze-free version (all 13) — drives `booze-free` |
 | `booze-free` | Contains no alcohol at all — shows the Booze-free pill |
 | `lm:leash` `lm:clips` `lm:tote` `lm:belt` `lm:cup` `lm:plates` | Which Lil & Mil stock it moves |
 | `needs-pricing` `needs-photos` | Launch checklist; remove when done |

@@ -17,9 +17,7 @@ Read "Pick up here" first. Everything else is reference.
 | 2. Spot-check | ✅ All Draft, $0.00, booze-free = variant 1, **What's inside came in as separate list lines** |
 | 3. Products file 2 of 2 (NS-008–NS-013) | ✅ Job `746998920` — 6 new, 0 failed |
 | 4. Smart collections (6) | ✅ Job `746998994` — 6 new, 0 failed. Rules verified. Matrixify warns the "Smart Collections" sheet is deprecated; use the "Collections" sheet next time |
-| 5. Theme editor → home → "Shop booze-free" button | **Open** — link to `/collections/booze-free` |
-
-Note: the `booze-free` collection matches tag `booze-free-option`, which every basket carries, so it lists all 13.
+| 5. Retire booze-free collection/tag/banner | **Open** — booze-free is handled by variants |
 
 Next: packaging SKUs + component costs → prices → images → SumTracker recipes (Open items below).
 
@@ -93,7 +91,8 @@ Booze-free is always variant 1 (default). Alcohol variants are `NS-00x-ALC`.
 
 ## Decisions made
 
-- **Packaging (Sep 16):** white box + white fill for mom, baby, shower and couples baskets; black box + black fill for dad baskets NS-006/007/008. No gold tissue, no custom Night Shift box. White box = PKG-100; small black = PKG-082. White baskets use **PKG-059 Krinkle Cut Fill ($0.50)** — the fill in the official bundle list (James, Sep 16). Black fill and the large black box still use placeholders PKG-FILL-BLACK, PKG-BOX-BLACK-L.
+- **Packaging (Sep 16):** white box + white fill for mom, baby, shower and couples baskets; black box + black fill for dad baskets NS-006/007/008. No gold tissue, no custom Night Shift box. White box = PKG-100; small black = PKG-082. **All baskets use PKG-059 Krinkle Cut Fill ($0.50)** — any fill is the same SKU (James, Sep 16). Large black box is a SumTracker SKU still to be confirmed (placeholder PKG-BOX-BLACK-L).
+- **Booze-free lives in the variant**, not a collection or tag (James, Sep 16). The `booze-free` smart collection and `booze-free-option` tag are retired in the catalog files; remove the live collection, the tag on the 13 products, and the home-page booze-free banner.
 
 - Store name **Night Shift Gift Co.** James confirmed availability; trademark clearance still recommended (Night Shift Brewing holds beer-class marks).
 - Every basket carries a leash, clips or Tot Tote to move stock.

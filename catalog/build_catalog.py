@@ -139,9 +139,8 @@ def body(b):
 def product_rows(b):
     tags = ["gift-basket", "night-shift", "needs-pricing", "needs-photos"]
     tags += [f"for:{c}" for c in b["collections"]]
-    tags.append("booze-free-option")
     if not b["alc"]:
-        tags.append("booze-free")
+        tags.append("booze-free")  # no alcohol version at all; booze-free choice otherwise lives in the variant
     tags.append("lm:" + ",lm:".join(b["lm"]))
     components = [f"{LM[k][0]} x1 — {LM[k][1]}" for k in b["lm"]]
     variants = [("Booze-free", b["sku"])]
@@ -195,7 +194,6 @@ COLLECTIONS = [
     ("new-dads", "Gifts for New Dads", "tag", "equals", "for:new-dads"),
     ("baby-shower", "Baby Shower Gifts", "tag", "equals", "for:baby-shower"),
     ("push-presents", "Push Presents", "tag", "equals", "for:push-presents"),
-    ("booze-free", "Booze-Free Gift Baskets", "tag", "equals", "booze-free-option"),
 ]
 
 

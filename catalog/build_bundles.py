@@ -144,7 +144,7 @@ pw.cell(1, 8).comment = Comment("Enter the retail price. Known cost excludes shi
 fl = wb.create_sheet("Open Flags")
 header(fl, ["Check", "Detail"], [36, 120])
 for a, b in [
-    ("Packaging SKUs to confirm", "White baskets use PKG-059 Krinkle Cut Fill ($0.50), the fill in the official bundle list (James, Sep 16). Black fill and the large black box still have no SKU: placeholders PKG-FILL-BLACK, PKG-BOX-BLACK-L."),
+    ("Packaging SKUs to confirm", "Every basket uses PKG-059 Krinkle Cut Fill ($0.50) — one fill SKU regardless of color (James, Sep 16). Small black box = PKG-082. The large black box exists in SumTracker but its SKU was not in the Bounty or BroBasket sheets: placeholder PKG-BOX-BLACK-L until confirmed."),
     ("Box size", "White baskets use PKG-100 White Bounty Basket Box ($4.58). NS-003, NS-005 and NS-011 carry the Tot Tote or a robe — confirm PKG-100 fits or add a larger white box SKU. Dad baskets NS-006 and NS-008 need the large black box; NS-007 uses PKG-082 Small Black Box ($1.00)."),
     ("Couples baskets", "NS-009 Lights Out Date Night and NS-010 The Morning After are packed white. Switch them to black in recipes.json if you'd rather."),
     ("Lil & Mil SKUs in SumTracker", "SA-003, SA-002, SA-005, TA-001, 2000, 1010 must exist in SumTracker with correct stock before uploading recipes."),

@@ -595,11 +595,11 @@
     "status": "Confirm SKU"
    },
    {
-    "sku": "PKG-FILL-BLACK",
-    "name": "Black crinkle-cut fill (confirm SKU)",
+    "sku": "PKG-059",
+    "name": "Krinkle Cut Fill",
     "qty": 1,
-    "cost": null,
-    "status": "Confirm SKU"
+    "cost": 0.5,
+    "status": "Existing"
    },
    {
     "sku": "PKG-002",
@@ -667,11 +667,11 @@
     "status": "Confirm SKU"
    },
    {
-    "sku": "PKG-FILL-BLACK",
-    "name": "Black crinkle-cut fill (confirm SKU)",
+    "sku": "PKG-059",
+    "name": "Krinkle Cut Fill",
     "qty": 1,
-    "cost": null,
-    "status": "Confirm SKU"
+    "cost": 0.5,
+    "status": "Existing"
    },
    {
     "sku": "PKG-002",
@@ -732,11 +732,11 @@
     "status": "Existing"
    },
    {
-    "sku": "PKG-FILL-BLACK",
-    "name": "Black crinkle-cut fill (confirm SKU)",
+    "sku": "PKG-059",
+    "name": "Krinkle Cut Fill",
     "qty": 1,
-    "cost": null,
-    "status": "Confirm SKU"
+    "cost": 0.5,
+    "status": "Existing"
    },
    {
     "sku": "PKG-005",
@@ -797,11 +797,11 @@
     "status": "Existing"
    },
    {
-    "sku": "PKG-FILL-BLACK",
-    "name": "Black crinkle-cut fill (confirm SKU)",
+    "sku": "PKG-059",
+    "name": "Krinkle Cut Fill",
     "qty": 1,
-    "cost": null,
-    "status": "Confirm SKU"
+    "cost": 0.5,
+    "status": "Existing"
    },
    {
     "sku": "PKG-005",
@@ -869,11 +869,11 @@
     "status": "Confirm SKU"
    },
    {
-    "sku": "PKG-FILL-BLACK",
-    "name": "Black crinkle-cut fill (confirm SKU)",
+    "sku": "PKG-059",
+    "name": "Krinkle Cut Fill",
     "qty": 1,
-    "cost": null,
-    "status": "Confirm SKU"
+    "cost": 0.5,
+    "status": "Existing"
    },
    {
     "sku": "PKG-002",
