@@ -11,8 +11,9 @@ HERE = pathlib.Path(__file__).resolve().parent
 RECIPES = HERE / "recipes.json"
 
 # How each component should LOOK in the photo, keyed by SKU and quantity.
-# Brand names stay out of the prompt text: image models garble label text and
-# we do not want other companies' logos generated. Upload real photos instead.
+# Branded items we actually stock are named in the prompt and must match the
+# uploaded reference photo, real label included (James, Sep 16). Only items
+# not sourced yet stay generic.
 LOOK = {
     ("AL-302", 1): "a dark green sparkling bottle with a gold foil neck",
     ("ACC-NS-FLUTE", 1): "a clear champagne flute",
@@ -73,8 +74,9 @@ STYLE = (
     "Seamless warm off-white background. Soft warm light from one side like a bedside lamp "
     "at night, gentle shadows. Every item clearly "
     "visible, not overlapping, arranged neatly in and just in front of the box. Clean, premium, "
-    "cozy. No people, no hands. No readable text, brand names or logos on any item; keep labels "
-    "plain. No watermark."
+    "cozy. No people, no hands. Branded products must look exactly like the uploaded reference "
+    "photos — same packaging, colors, labels and logos; do not substitute generic versions or invent "
+    "new label text. Items marked plain have no branding. No watermark."
 )
 
 
@@ -95,14 +97,17 @@ def scene(rows, packaging, large):
         look = LOOK.get((sku, qty))
         if not look:
             raise SystemExit(f"No LOOK entry for {sku} x{qty} — add one to build_prompts.py")
-        items.append(look)
         if sku in LIL_MIL:
             refs.append(f"{cname} (Lil & Mil, {sku})")
-        elif "-NS-" not in sku and "TBD" not in sku:
+            items.append(f"{look} (Lil & Mil {cname.removeprefix('The ')}, exactly as in the reference photo)")
+        elif "-NS-" not in sku and "TBD" not in sku and not sku.startswith("ACC-GAME") and not sku.startswith("ACC-MUG"):
             refs.append(f"{cname} ({sku})")
+            items.append(f"{cname} ({look}, real label exactly as in the reference photo)")
+        else:
+            items.append(look + " (plain, unbranded)")
     box = BOXES[packaging]
     box = ("A large " if large else "A ") + box.split(" ", 1)[1]
-    listing = ", ".join(items[:-1]) + ", and " + items[-1] if len(items) > 1 else items[0]
+    listing = "; ".join(items[:-1]) + "; and " + items[-1] if len(items) > 1 else items[0]
     return listing, refs, box
 
 
@@ -116,11 +121,13 @@ def main():
            "## How to use", "",
            "1. New ChatGPT chat per basket so the style doesn't drift.",
            "2. **Upload the reference photos listed under each basket first**, then say: "
-           "*\"Match the shape, color and packaging of these products, but keep their labels plain.\"* "
+           "*\"These are the exact products in the basket. Reproduce each one as shown, real label and logo included — no generic stand-ins.\"* "
            "Lil & Mil photos matter most — the bag, leash, clips and belt must look exactly like what ships.",
            "3. Paste the prompt. Revise in plain words (\"bag more to the front\", \"less shred\").",
            "4. Save as `<handle>.png` and add it to the product, or send the files and I'll attach them.",
-           "5. Items marked *not sourced yet* are placeholders — regenerate once you pick the real product.", ""]
+           "5. Items marked *not sourced yet* are placeholders — regenerate once you pick the real product.",
+           "6. If ChatGPT still swaps in generic items, reply: *\"Use the uploaded product photos exactly — same brand, label and packaging. Don't redesign them.\"* "
+           "If it refuses to show a brand, generate the scene with plain items and composite the real product photos in Canva.", ""]
     handles = {}
     import csv
     for f in sorted(HERE.glob("matrixify_baskets_*.csv")):

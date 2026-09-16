@@ -9,10 +9,21 @@ Read "Pick up here" first. Everything else is reference.
 
 ## Pick up here
 
-**One import is uploaded and waiting.** Nothing has been written to the store yet.
+**Catalog is live in the store as drafts (Sep 16, 3:00pm PT).** All three imports finished with 0 failures.
 
-| Step | Status | How |
-| --- | --- | --- |
+| Step | Status |
+| --- | --- |
+| 1. Products file 1 of 2 (NS-001–NS-007) | ✅ Matrixify job `746994786` — 7 new, 0 failed |
+| 2. Spot-check | ✅ All Draft, $0.00, booze-free = variant 1, **What's inside came in as separate list lines** |
+| 3. Products file 2 of 2 (NS-008–NS-013) | ✅ Job `746998920` — 6 new, 0 failed |
+| 4. Smart collections (6) | ✅ Job `746998994` — 6 new, 0 failed. Rules verified. Matrixify warns the "Smart Collections" sheet is deprecated; use the "Collections" sheet next time |
+| 5. Theme editor → home → "Shop booze-free" button | **Open** — link to `/collections/booze-free` |
+
+Note: the `booze-free` collection matches tag `booze-free-option`, which every basket carries, so it lists all 13.
+
+Next: packaging SKUs + component costs → prices → images → SumTracker recipes (Open items below).
+
+--- | --- | --- |
 | 1. Products file 1 of 2 (7 draft baskets, NS-001–NS-007) | **Estimated, not started.** Matrixify job `746994786`, state "Ready to Import", 7 products, all columns recognized incl. both metafields | `matrixify_import_start` job_id 746994786 (Matrixify – Lil and Mil connector). Uploaded file matches repo (MD5 `o1j7kk6D7g2BnZ+2LMDOlg==`) |
 | 2. Check one imported product | — | Confirm Status = Draft, price $0.00, variants, and that **What's inside shows as separate list lines**. If the list came in as one line, fix the format before step 3 |
 | 3. Products file 2 of 2 (NS-008–NS-013) | Not uploaded | `catalog/matrixify_baskets_2of2.csv` |
@@ -91,7 +102,7 @@ Booze-free is always variant 1 (default). Alcohol variants are `NS-00x-ALC`.
 
 ## Decisions made
 
-- **Packaging (Sep 16):** white box + white fill for mom, baby, shower and couples baskets; black box + black fill for dad baskets NS-006/007/008. No gold tissue, no custom Night Shift box. White box = PKG-100; small black = PKG-082. White fill, black fill and a large black box are stocked but their SKUs weren't found — placeholders PKG-FILL-WHITE, PKG-FILL-BLACK, PKG-BOX-BLACK-L to replace in recipes.json.
+- **Packaging (Sep 16):** white box + white fill for mom, baby, shower and couples baskets; black box + black fill for dad baskets NS-006/007/008. No gold tissue, no custom Night Shift box. White box = PKG-100; small black = PKG-082. White baskets use **PKG-059 Krinkle Cut Fill ($0.50)** — the fill in the official bundle list (James, Sep 16). Black fill and the large black box still use placeholders PKG-FILL-BLACK, PKG-BOX-BLACK-L.
 
 - Store name **Night Shift Gift Co.** James confirmed availability; trademark clearance still recommended (Night Shift Brewing holds beer-class marks).
 - Every basket carries a leash, clips or Tot Tote to move stock.
@@ -99,10 +110,14 @@ Booze-free is always variant 1 (default). Alcohol variants are `NS-00x-ALC`.
 - No engraving claims anywhere (store has no engraving add-on).
 - Jerky uses FD-026 Country Archer, not the Carnivore Candy "Tequila" jerky.
 - Catalog files live on a branch, never on the Shopify-connected `main`.
+- **Alcohol versions sell on this store** (James, Sep 16). ALC variants stay draft until priced.
+- **Image prompts name the real brands** (James, Sep 16): stocked items must match the uploaded reference photos, labels included. Only not-yet-sourced items are generic.
 
 ## Corrected inventory facts (James, Sep 15)
 
-- No stock at Nevada Pack anymore. Shopify still shows it — **oversell risk**; fix before any free-leash promo.
+- **Nevada Pack removed (Sep 16).** Moved the 800 Tot Totes (SA-005) to BB Warehouse, zeroed the rest (SA-003 1,789 · SA-002 760 · SA-001 12), then deactivated and deleted the location.
+- A second, hidden fulfillment-service location **"Navada Pac"** held a duplicate 445 car seat belts (TA-001). Zeroed. The connector can't delete it (it belongs to another app) — remove it in Settings → Locations or by uninstalling that app.
+- Counts now in Shopify (BB Warehouse): leash SA-003 1,646 · clips SA-002 757 + SA-002-1 500 · Tot Tote 800 · belt TA-001 445 · SA-001 0 · cup 2000 56 · plates 1010 18.
 - Leash ~1,500 · Clips under 500 pairs (only 500 ever bought; 1-pack and 2-pack SKUs both claim stock) · Tot Tote 800 · Car seat belt under 500 · Silicone cups ~310, not reordering · Plates ~39.
 
 ---
@@ -110,16 +125,16 @@ Booze-free is always variant 1 (default). Alcohol variants are `NS-00x-ALC`.
 ## Open items
 
 **Needs James**
-1. Approve starting job `746994786`, then files 2 and collections.
-2. Give the real SKUs for white fill, black fill and the large black box (and whether PKG-100 fits the Tot Tote baskets). Then fill costs for the remaining new components in the New Components tab.
+1. Theme editor → Home → "Every basket, booze-free or not" banner → **Button link** = `/collections/booze-free` (currently blank, so it goes to all products). The Shopify connector can't write the live theme and this session can't push to the repo.
+2. SKUs for black fill and the large black box (and whether PKG-100 fits the Tot Tote baskets). Then fill costs for the remaining new components.
 3. Set prices in the Price Worksheet, then push prices to the products.
-4. Which store sells alcohol baskets. Until then ALC variants stay unsellable.
-5. Real SKUs for BEER-TBD (Brew Hunters) and AL-TBD-WHISKEY (BroBasket).
-6. Confirm Lil & Mil SKUs exist in SumTracker with corrected counts; then upload the SumTracker Upload tab.
-7. Generate images in ChatGPT with the prompts; send files to attach.
-8. Confirm the gift message line-item property reaches the packing slip / ShipStation.
-9. Netlify for `Lil-n-Mil` (publish `.`, no build, enable form detection) and a Headless-channel Storefront token.
-10. Revoke the GitHub PAT used this session (it covered both repos).
+4. Real SKUs for BEER-TBD (Brew Hunters) and AL-TBD-WHISKEY (BroBasket).
+5. Upload the SumTracker Upload tab once Lil & Mil SKUs and counts are confirmed there. Clip counts in Shopify (757 + 500) still exceed the ~500 pairs on hand.
+6. Photos in ChatGPT with the regenerated brand-named prompts; send files to attach.
+7. Confirm the gift message line-item property reaches the packing slip / ShipStation.
+8. Netlify for `Lil-n-Mil` is set up; domain in progress. Headless-channel Storefront token still needed for live stock.
+9. Delete the leftover "Navada Pac" location in admin.
+10. TA-001 car seat belt is set to keep selling at 0 stock (CONTINUE); switch to deny if that isn't intended.
 
 **Flags in the workbook's Open Flags tab** — packaging fit for Tot Tote baskets, pregnancy-safe check on ACC-203 in NS-005, placeholder SKUs ACC-GAME-CARDS / ACC-MUG-PAIR not in SumTracker, plate/cup colors (Black) and plate stock.
 
