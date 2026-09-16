@@ -19,6 +19,8 @@ Read "Pick up here" first. Everything else is reference.
 | 4. Smart collections (6) | ✅ Job `746998994` — 6 new, 0 failed. Rules verified. Matrixify warns the "Smart Collections" sheet is deprecated; use the "Collections" sheet next time |
 | 5. Retire booze-free collection/tag/banner | **Open** — booze-free is handled by variants |
 
+**Add-ons (Sep 16):** theme PR #1 `feature/product-addons` ports BroBasket's card / bottle engraving / engraved glass. Before merging, import `catalog/matrixify_addon_products.csv` then `catalog/matrixify_option_set_triggers.csv` (Matrixify – Lil and Mil). Companion SKUs reuse Bounty's (PKG-083/087/089/101, VR-009*, VR-011/012/013*).
+
 Next: packaging SKUs + component costs → prices → images → SumTracker recipes (Open items below).
 
 ---

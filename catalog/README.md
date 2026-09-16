@@ -20,6 +20,8 @@ python3 catalog/build_catalog.py
 | `matrixify_collections.csv` | Smart Collections | `gift-baskets`, `new-moms`, `new-dads`, `baby-shower`, `push-presents` — the handles the theme expects |
 | `image_prompts.md` | — | ChatGPT prompts generated from the recipes by `build_prompts.py` |
 | `recipes.json` | — | Source of truth: contents + packaging per basket |
+| `matrixify_addon_products.csv` | Products | Companion products for the theme add-ons: `special-card` (free card + Congrats / Thank You / Mother's Day), `engraving`, `engraved-glass`. Active, published, tagged `hidden` |
+| `matrixify_option_set_triggers.csv` | Products | Sets `custom.option_set_v2` on the 13 baskets: Card on all; Engraved Bottle on NS-001/002/007/009; Engraved Glass on NS-006/007/009 |
 | `nightshift_MASTER_bundles.xlsx` | SumTracker (Upload tab) | Built by `build_bundles.py` — recipes, costs, price worksheet |
 
 Split in two because the Matrixify plan caps products per job.

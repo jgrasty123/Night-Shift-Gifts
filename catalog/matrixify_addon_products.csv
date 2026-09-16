@@ -1,0 +1,17 @@
+Handle,Command,Title,Body HTML,Vendor,Type,Tags,Tags Command,Status,Published,Published Scope,Option1 Name,Option1 Value,Option2 Name,Option2 Value,Variant Command,Variant SKU,Variant Price,Variant Taxable,Variant Requires Shipping,Variant Inventory Tracker,Variant Inventory Policy,Image Command,Image Src
+special-card,MERGE,Gift Card,<p>Every Night Shift gift can include a card with your message. The standard card is free.</p>,Night Shift Gift Co.,Packaging,"addon, hidden, social-exclude",REPLACE,Active,TRUE,global,Type,A Special Gift For You (Free Card),,,MERGE,PKG-083,0.00,TRUE,FALSE,,continue,MERGE,https://cdn.shopify.com/s/files/1/0810/0541/2598/files/special-card-free.jpg?v=1789502575
+special-card,,,,,,,,,,,Type,Congrats,,,MERGE,PKG-087,4.95,TRUE,FALSE,,continue,,
+special-card,,,,,,,,,,,Type,Thank You,,,MERGE,PKG-089,4.95,TRUE,FALSE,,continue,,
+special-card,,,,,,,,,,,Type,Happy Mother's Day,,,MERGE,PKG-101,4.95,TRUE,FALSE,,continue,,
+engraving,MERGE,Bottle Engraving,<p>Add custom engraving to the bottle in your gift.</p>,Night Shift Gift Co.,virtual product,"addon, hidden, social-exclude",REPLACE,Active,TRUE,global,Engraving,Clear Engraving,,,MERGE,VR-009,30.00,TRUE,FALSE,,continue,MERGE,https://cdn.shopify.com/s/files/1/0810/0541/2598/files/engraving-clear.jpg?v=1789502575
+engraving,,,,,,,,,,,Engraving,Gold Color Fill Engraving,,,MERGE,VR-009g,35.00,TRUE,FALSE,,continue,,
+engraving,,,,,,,,,,,Engraving,Silver Color Fill Engraving,,,MERGE,VR-009s,35.00,TRUE,FALSE,,continue,,
+engraved-glass,MERGE,Engraved Glass,<p>Add a custom-engraved glass to your gift. Choose your glass and engraving style.</p>,Night Shift Gift Co.,virtual product,"addon, hidden, social-exclude",REPLACE,Active,TRUE,global,Glass Type,Stemless Wine,Engraving,Clear Engraving,MERGE,VR-013C,30.00,TRUE,FALSE,,continue,MERGE,https://cdn.shopify.com/s/files/1/0810/0541/2598/files/Engraved-steamless-wine-update.png?v=1781638980
+engraved-glass,,,,,,,,,,,Glass Type,Stemless Wine,Engraving,Gold Color Fill Engraving,MERGE,VR-013G,35.00,TRUE,FALSE,,continue,,
+engraved-glass,,,,,,,,,,,Glass Type,Stemless Wine,Engraving,Silver Color Fill Engraving,MERGE,VR-013S,35.00,TRUE,FALSE,,continue,,
+engraved-glass,,,,,,,,,,,Glass Type,Rocks Glass,Engraving,Clear Engraving,MERGE,VR-011C,30.00,TRUE,FALSE,,continue,,
+engraved-glass,,,,,,,,,,,Glass Type,Rocks Glass,Engraving,Gold Color Fill Engraving,MERGE,VR-011G,35.00,TRUE,FALSE,,continue,,
+engraved-glass,,,,,,,,,,,Glass Type,Rocks Glass,Engraving,Silver Color Fill Engraving,MERGE,VR-011S,35.00,TRUE,FALSE,,continue,,
+engraved-glass,,,,,,,,,,,Glass Type,Shot Glass,Engraving,Clear Engraving,MERGE,VR-012C,30.00,TRUE,FALSE,,continue,,
+engraved-glass,,,,,,,,,,,Glass Type,Shot Glass,Engraving,Gold Color Fill Engraving,MERGE,VR-012G,35.00,TRUE,FALSE,,continue,,
+engraved-glass,,,,,,,,,,,Glass Type,Shot Glass,Engraving,Silver Color Fill Engraving,MERGE,VR-012S,35.00,TRUE,FALSE,,continue,,
