@@ -113,8 +113,8 @@ p{margin:0}
 /* ---------- header ---------- */
 .hdr{position:sticky;top:0;z-index:40;background:var(--cream);border-bottom:2px solid var(--midnight)}
 .hdr__in{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.85rem}
-.nav{display:flex;gap:1.6rem}
-.nav a{font-family:var(--display);font-weight:700;font-size:.95rem;text-decoration:none;letter-spacing:.01em}
+.nav{display:flex;flex:1 1 auto;flex-wrap:wrap;justify-content:center;min-width:0;row-gap:.3rem;column-gap:clamp(.5rem,1.05vw,1.5rem)}
+.nav a{font-family:var(--display);font-weight:700;font-size:clamp(.8rem,.92vw,.95rem);text-decoration:none;letter-spacing:.01em;white-space:nowrap}
 .nav a:hover{color:var(--wick)}
 .mark{
   font-family:var(--display);font-weight:800;
@@ -123,6 +123,7 @@ p{margin:0}
 }
 .mark svg{width:1.1em;height:1.1em;fill:var(--gold);stroke:var(--midnight);stroke-width:1.2;flex:none}
 .mark img{width:auto;max-height:44px}
+.mark,.hdr__right{flex:none}
 .hdr__right{display:flex;align-items:center;gap:1rem}
 .bag{
   font-family:var(--mono);font-size:.86rem;
@@ -133,7 +134,7 @@ p{margin:0}
 .hdr__drawer{display:none;border-top:2px solid var(--midnight);padding-block:1rem}
 .hdr__drawer[open]{display:block}
 .hdr__drawer a{display:block;padding:.6rem 0;font-family:var(--display);font-weight:700;text-decoration:none}
-@media(max-width:860px){
+@media(max-width:1180px){
   .nav{display:none}
   .hdr__toggle{display:inline-block}
 }
