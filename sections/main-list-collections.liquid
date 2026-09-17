@@ -1,15 +1,26 @@
+{%- comment -%}
+  Collections list. Night Shift sells gift baskets only, so the legacy
+  Lil & Mil accessory collections are excluded by handle, and any
+  collection with no products is hidden rather than shown as "0 gifts".
+{%- endcomment -%}
+{%- assign hidden_handles = section.settings.hidden_handles | replace: ' ', '' | split: ',' -%}
+
 <section class="band scheme scheme--cream">
   <div class="wrap">
-    <div class="band__head"><div><h2>Collections</h2></div></div>
+    <div class="band__head"><div><h2>{{ section.settings.heading | default: 'Collections' }}</h2></div></div>
     <div class="brews">
       {%- for collection in collections -%}
-        <a class="brew{% cycle ' brew--blush', ' brew--nightlight', ' brew--gold', ' brew--midnight' %}" href="{{ collection.url }}">
-          <div><h3>{{ collection.title }}</h3></div>
-          <div class="brew__foot">
-            <span>{{ collection.products_count }} {% if collection.products_count == 1 %}gift{% else %}gifts{% endif %}</span>
-            <svg class="brew__moon" aria-hidden="true"><use href="#moon"/></svg>
-          </div>
-        </a>
+        {%- unless hidden_handles contains collection.handle -%}
+          {%- if collection.products_count > 0 or section.settings.show_empty -%}
+            <a class="brew{% cycle ' brew--blush', ' brew--nightlight', ' brew--gold', ' brew--midnight' %}" href="{{ collection.url }}">
+              <div><h3>{{ collection.title }}</h3></div>
+              <div class="brew__foot">
+                <span>{{ collection.products_count }} {% if collection.products_count == 1 %}gift{% else %}gifts{% endif %}</span>
+                <svg class="brew__moon" aria-hidden="true"><use href="#moon"/></svg>
+              </div>
+            </a>
+          {%- endif -%}
+        {%- endunless -%}
       {%- endfor -%}
     </div>
   </div>
@@ -19,6 +30,26 @@
 {
   "name": "Collections list",
   "tag": "div",
-  "settings": []
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Collections"
+    },
+    {
+      "type": "textarea",
+      "id": "hidden_handles",
+      "label": "Collection handles to hide",
+      "info": "Comma-separated. Non-gift and system collections.",
+      "default": "frontpage, stroller-accessories, baby-travel-gear, baby-tableware, gift-sets-for-new-babies-and-parents"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_empty",
+      "label": "Show collections with no products",
+      "default": false
+    }
+  ]
 }
 {% endschema %}
