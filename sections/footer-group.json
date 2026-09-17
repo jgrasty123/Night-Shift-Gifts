@@ -32,12 +32,26 @@
             "heading": "Stay in the loop",
             "text": ""
           }
+        },
+        "family": {
+          "type": "family",
+          "settings": {
+            "heading": "Our other shops",
+            "text": "Same team, same Ventura warehouse.",
+            "label_1": "The BroBasket — liquor gift baskets",
+            "url_1": "https://thebrobasket.com",
+            "label_2": "Brew Hunters — craft beer & beer gifts",
+            "url_2": "https://brewhunters.com",
+            "label_3": "BoozeFinders — wine & spirits",
+            "url_3": "https://boozefinders.com"
+          }
         }
       },
       "block_order": [
         "about",
         "shop",
         "help",
+        "family",
         "news"
       ],
       "settings": {
