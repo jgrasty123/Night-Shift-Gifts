@@ -15,7 +15,7 @@
     "age_notice": "",
     "shipping_notice": "Shipping eligibility is confirmed at checkout.",
     "signature_notice": "",
-    "show_cart_note": false,
+    "show_cart_note": true,
     "content_for_index": []
   }
 }
