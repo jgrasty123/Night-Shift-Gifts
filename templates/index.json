@@ -19,7 +19,9 @@
         "line_3": "",
         "subheading": "Gift baskets for new moms, new dads and baby showers.",
         "cta_label": "Shop gift baskets",
+        "cta_url": "",
         "cta2_label": "Shop by recipient",
+        "cta2_url": "",
         "ship_note": "",
         "sticker_text": "Night Shift Gift Co. ·"
       }
@@ -90,6 +92,7 @@
             "title": "New moms",
             "subtitle": "Gifts that aren't for the baby",
             "count_label": "",
+            "url": "",
             "tile_color": "blush"
           }
         },
@@ -100,6 +103,7 @@
             "title": "New dads",
             "subtitle": "Survival kits for the first nights",
             "count_label": "",
+            "url": "",
             "tile_color": "nightlight"
           }
         },
@@ -110,6 +114,7 @@
             "title": "Baby showers",
             "subtitle": "Practical gifts they'll use daily",
             "count_label": "",
+            "url": "",
             "tile_color": "gold"
           }
         },
@@ -120,6 +125,7 @@
             "title": "Push presents",
             "subtitle": "For the one who did the hard part",
             "count_label": "",
+            "url": "",
             "tile_color": "midnight"
           }
         }
@@ -169,14 +175,16 @@
         "heading": "Every basket, booze-free or not",
         "text": "",
         "cta_label": "Shop booze-free",
+        "cta_url": "",
         "sticker_text": ""
       }
     },
     "review": {
       "type": "review-block",
+      "disabled": true,
       "settings": {
         "color_scheme": "midnight",
-        "placeholder": true,
+        "placeholder": false,
         "placeholder_label": "Placeholder review — sample copy",
         "eyebrow": "",
         "quote": "\"Customer quote goes here once real reviews are connected.\"",
