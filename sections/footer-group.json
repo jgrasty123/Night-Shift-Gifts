@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "Footer",
@@ -5,25 +14,25 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "about": {
-          "type": "text",
-          "settings": {
-            "heading": "Night Shift Gift Co.",
-            "text": "Gift baskets for new moms, new dads and baby showers."
-          }
-        },
-        "shop": {
-          "type": "menu",
-          "settings": {
-            "heading": "Shop",
-            "menu": "footer"
-          }
-        },
         "help": {
           "type": "menu",
           "settings": {
             "heading": "Help",
             "menu": "footer"
+          }
+        },
+        "menu_PwPCfU": {
+          "type": "menu",
+          "settings": {
+            "heading": "Policies",
+            "menu": "policies"
+          }
+        },
+        "about": {
+          "type": "text",
+          "settings": {
+            "heading": "Night Shift Gift Co.",
+            "text": "Gift baskets for new moms, new dads and baby showers."
           }
         },
         "news": {
@@ -32,26 +41,12 @@
             "heading": "Stay in the loop",
             "text": ""
           }
-        },
-        "family": {
-          "type": "family",
-          "settings": {
-            "heading": "Our other shops",
-            "text": "Same team, same Ventura warehouse.",
-            "label_1": "The BroBasket — liquor gift baskets",
-            "url_1": "https://thebrobasket.com",
-            "label_2": "Brew Hunters — craft beer & beer gifts",
-            "url_2": "https://brewhunters.com",
-            "label_3": "BoozeFinders — wine & spirits",
-            "url_3": "https://boozefinders.com"
-          }
         }
       },
       "block_order": [
-        "about",
-        "shop",
         "help",
-        "family",
+        "menu_PwPCfU",
+        "about",
         "news"
       ],
       "settings": {
