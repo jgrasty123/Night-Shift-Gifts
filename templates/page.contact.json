@@ -1,0 +1,116 @@
+{
+  "sections": {
+    "contact": {
+      "type": "contact-form",
+      "blocks": {
+        "t1": {
+          "type": "topic",
+          "settings": {
+            "label": "Order question"
+          }
+        },
+        "t2": {
+          "type": "topic",
+          "settings": {
+            "label": "Where's my order?"
+          }
+        },
+        "t3": {
+          "type": "topic",
+          "settings": {
+            "label": "Damaged, wrong, or missing item"
+          }
+        },
+        "t4": {
+          "type": "topic",
+          "settings": {
+            "label": "Gift message or delivery timing"
+          }
+        },
+        "t5": {
+          "type": "topic",
+          "settings": {
+            "label": "What's inside a basket?"
+          }
+        },
+        "t6": {
+          "type": "topic",
+          "settings": {
+            "label": "Bulk or corporate order"
+          }
+        },
+        "t7": {
+          "type": "topic",
+          "settings": {
+            "label": "Something else"
+          }
+        },
+        "f1": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I add a gift message?",
+            "answer": "<p>Yes. There's a gift message field at checkout and we write it on a card that goes in the box.</p>"
+          }
+        },
+        "f2": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I send a basket without the alcohol?",
+            "answer": "<p>Every basket is available booze-free. Look for the booze-free option on the product page, or browse the Booze-Free collection.</p>"
+          }
+        },
+        "f3": {
+          "type": "faq",
+          "settings": {
+            "question": "Where do you ship?",
+            "answer": "<p>Shipping eligibility is confirmed at checkout. Baskets that include alcohol are limited to eligible states and require an adult 21 or older to receive them.</p>"
+          }
+        },
+        "f4": {
+          "type": "faq",
+          "settings": {
+            "question": "My order arrived damaged or wrong.",
+            "answer": "<p>Email us within 7 days of delivery with your order number and a photo and we'll make it right. All other sales are final.</p>"
+          }
+        },
+        "f5": {
+          "type": "faq",
+          "settings": {
+            "question": "When will my order ship?",
+            "answer": "<p>Orders placed before 3:00pm PT ship the same day. Orders placed after 3:00pm PT, on a weekend, or on a holiday ship the next business day.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7",
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5"
+      ],
+      "settings": {
+        "color_scheme": "cream",
+        "eyebrow": "We're up too",
+        "heading": "Get in touch",
+        "intro": "Questions about an order, a gift message, or what's inside a basket? Send it over and a real person will get back to you.",
+        "submit_label": "Send message",
+        "email": "Owly@nightshiftgifts.com",
+        "phone": "(844) 446-2443",
+        "hours": "Monday to Friday, 9:00am to 5:00pm PT. Closed Saturday and Sunday.",
+        "address": "Go-To Gifting, LLC, 2264 Goodyear Ave, STE C, Ventura, CA 93003",
+        "aside_note": "This address is for mail only, not returns or pickups.",
+        "response_time": "We reply the same business day."
+      }
+    }
+  },
+  "order": [
+    "contact"
+  ]
+}

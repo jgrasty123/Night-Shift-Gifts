@@ -1,0 +1,338 @@
+{%- liquid
+  assign scheme = section.settings.color_scheme | default: 'cream'
+  assign tel_href = section.settings.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-'
+-%}
+
+<section class="band scheme scheme--{{ scheme }}">
+  <div class="wrap">
+
+    <div class="band__head">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow eyebrow--wick">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        {%- if section.settings.intro != blank -%}
+          <p style="margin-top:1rem;max-width:46ch">{{ section.settings.intro }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="contact">
+
+      <div class="contact__form">
+        {%- form 'contact', id: 'contact-form', class: 'cform' -%}
+
+          {%- if form.posted_successfully? -%}
+            <div class="cform__note cform__note--ok" role="status" tabindex="-1">
+              <b>Thanks — we got it.</b>
+              <span>{{ section.settings.response_time }}</span>
+            </div>
+          {%- endif -%}
+
+          {%- if form.errors -%}
+            <div class="cform__note cform__note--bad" role="alert" tabindex="-1">
+              <b>That didn't send.</b>
+              <span>{{ form.errors | default_errors }}</span>
+            </div>
+          {%- endif -%}
+
+          <div class="cform__row">
+            <div class="cform__field">
+              <label for="cf-name">Your name</label>
+              <input id="cf-name" type="text" name="contact[name]" autocomplete="name"
+                     value="{{ form.name }}" required>
+            </div>
+            <div class="cform__field">
+              <label for="cf-email">Email <span class="cform__hint">so we can reply</span></label>
+              <input id="cf-email" type="email" name="contact[email]" autocomplete="email"
+                     value="{{ form.email }}" required
+                     {% if form.errors contains 'email' %}aria-invalid="true"{% endif %}>
+            </div>
+          </div>
+
+          <div class="cform__row">
+            <div class="cform__field">
+              <label for="cf-order">Order number <span class="cform__hint">optional</span></label>
+              <input id="cf-order" type="text" name="contact[Order number]" placeholder="#1234">
+            </div>
+            <div class="cform__field">
+              <label for="cf-topic">What's this about?</label>
+              <div class="cform__select">
+                <select id="cf-topic" name="contact[Topic]">
+                  {%- for block in section.blocks -%}
+                    {%- if block.type == 'topic' -%}
+                      <option value="{{ block.settings.label | escape }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</option>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="cform__field">
+            <label for="cf-body">Message</label>
+            <textarea id="cf-body" name="contact[body]" rows="6" required>{{ form.body }}</textarea>
+          </div>
+
+          <button type="submit" class="cta cta--gold">{{ section.settings.submit_label }}</button>
+
+        {%- endform -%}
+      </div>
+
+      <aside class="contact__aside">
+        <div class="contact__card">
+          <h3>Reach us directly</h3>
+
+          {%- if section.settings.email != blank -%}
+            <div class="contact__item">
+              <span class="contact__label">Email</span>
+              <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.phone != blank -%}
+            <div class="contact__item">
+              <span class="contact__label">Phone &amp; text</span>
+              <a href="tel:{{ tel_href }}">{{ section.settings.phone }}</a>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.hours != blank -%}
+            <div class="contact__item">
+              <span class="contact__label">Hours</span>
+              <span>{{ section.settings.hours }}</span>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.response_time != blank -%}
+            <div class="contact__item">
+              <span class="contact__label">Response time</span>
+              <span>{{ section.settings.response_time }}</span>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.address != blank -%}
+            <div class="contact__item">
+              <span class="contact__label">Mailing address</span>
+              <span>{{ section.settings.address }}</span>
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.aside_note != blank -%}
+          <p class="contact__fineprint">{{ section.settings.aside_note }}</p>
+        {%- endif -%}
+      </aside>
+
+    </div>
+
+    {%- assign faq_count = 0 -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'faq' -%}{%- assign faq_count = faq_count | plus: 1 -%}{%- endif -%}
+    {%- endfor -%}
+
+    {%- if faq_count > 0 -%}
+      <div class="contact__faq">
+        <h3>Before you write in</h3>
+        <div class="facts">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'faq' -%}
+              <details {{ block.shopify_attributes }}>
+                <summary>{{ block.settings.question }}</summary>
+                <div class="facts__body">{{ block.settings.answer }}</div>
+              </details>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<style>
+  .contact{
+    display:grid;
+    grid-template-columns:1.25fr .75fr;
+    gap:clamp(1.6rem,4vw,3.2rem);
+    align-items:start;
+  }
+  @media(max-width:860px){ .contact{grid-template-columns:1fr} }
+
+  .cform{display:flex;flex-direction:column;gap:1.1rem}
+  .cform__row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+  @media(max-width:560px){ .cform__row{grid-template-columns:1fr} }
+
+  .cform__field{display:flex;flex-direction:column;gap:.4rem}
+  .cform__field label{font-family:var(--display);font-weight:800;font-size:.95rem}
+  .cform__hint{font-family:var(--body);font-weight:500;font-size:.86rem;color:var(--muted)}
+
+  .cform__field input,
+  .cform__field textarea,
+  .cform__select select{
+    width:100%;font:inherit;font-size:1rem;color:var(--ink);background:var(--paper);
+    border:2px solid var(--midnight);border-radius:14px;padding:.7rem .9rem;
+  }
+  .cform__field textarea{resize:vertical;min-height:8rem}
+  .cform__field input:focus,
+  .cform__field textarea:focus,
+  .cform__select select:focus{outline:3px solid var(--gold);outline-offset:1px}
+  .cform [aria-invalid="true"]{border-color:#B42318}
+
+  .cform__select{position:relative}
+  .cform__select select{
+    appearance:none;cursor:pointer;padding-right:2.5rem;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Cpath fill='%231F2A44' d='M6 8 1 3h10z'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 1rem center;
+  }
+
+  .cform button[type="submit"]{align-self:flex-start;margin-top:.3rem}
+
+  .cform__note{
+    display:flex;flex-direction:column;gap:.25rem;
+    border:2px solid var(--midnight);border-radius:16px;padding:1rem 1.1rem;
+  }
+  .cform__note b{font-family:var(--display);font-weight:800;font-size:1.02rem}
+  .cform__note span{font-size:.95rem}
+  .cform__note--ok{background:var(--nightlight);color:var(--midnight)}
+  .cform__note--bad{background:var(--blush);color:var(--midnight);border-color:#B42318}
+
+  .contact__card{
+    background:var(--paper);color:var(--midnight);
+    border:2px solid var(--midnight);border-radius:20px;
+    box-shadow:5px 5px 0 var(--midnight);
+    padding:1.4rem 1.3rem;
+    display:flex;flex-direction:column;gap:1.1rem;
+  }
+  .contact__card h3{font-size:1.25rem}
+  .contact__item{display:flex;flex-direction:column;gap:.15rem;font-size:.98rem}
+  .contact__label{font-family:var(--body);font-weight:600;font-size:.86rem;color:var(--wick)}
+  .contact__item a{color:var(--midnight);text-decoration:underline;text-underline-offset:2px}
+  .contact__item a:hover{color:var(--wick)}
+
+  .contact__fineprint{margin-top:1rem;font-size:.9rem;color:var(--muted);max-width:34ch}
+
+  .contact__faq{margin-top:clamp(2.4rem,5vw,4rem);max-width:68ch}
+  .contact__faq h3{margin-bottom:.6rem}
+</style>
+
+{% schema %}
+{
+  "name": "Contact form",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        { "value": "cream", "label": "Cream" },
+        { "value": "paper", "label": "Paper" }
+      ],
+      "default": "cream"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "We're up too"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Get in touch"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro",
+      "default": "Questions about an order, a gift message, or what's inside a basket? Send it over and a real person will get back to you."
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Submit button label",
+      "default": "Send message"
+    },
+    {
+      "type": "header",
+      "content": "Contact details"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Support email",
+      "default": "Owly@nightshiftgifts.com"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone",
+      "default": "(844) 446-2443"
+    },
+    {
+      "type": "text",
+      "id": "hours",
+      "label": "Hours",
+      "default": "Monday to Friday, 9:00am to 5:00pm PT. Closed Saturday and Sunday."
+    },
+    {
+      "type": "text",
+      "id": "response_time",
+      "label": "Response time (must match what you can actually honor)",
+      "default": "We reply the same business day."
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Mailing address",
+      "default": "Go-To Gifting, LLC, 2264 Goodyear Ave, STE C, Ventura, CA 93003"
+    },
+    {
+      "type": "textarea",
+      "id": "aside_note",
+      "label": "Fine print under the card",
+      "default": "This address is for mail only, not returns or pickups."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "topic",
+      "name": "Subject option",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Option label",
+          "default": "Order question"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Can I add a gift message?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Yes. There's a gift message field at checkout and we write it on a card that goes in the box.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact form"
+    }
+  ]
+}
+{% endschema %}
