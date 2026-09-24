@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Night Shift Gift Co. — theme JS
+   Night Shift Gifts Co. — theme JS
    No framework, no build step. Everything is progressive: the page works
    with JS off, this only upgrades it.
    ========================================================================== */

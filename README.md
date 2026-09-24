@@ -1,6 +1,6 @@
-# Night Shift Gift Co. — Shopify theme
+# Night Shift Gifts Co. — Shopify theme
 
-Online Store 2.0 theme for **Night Shift Gift Co.**, the new-parent and baby
+Online Store 2.0 theme for **Night Shift Gifts Co.**, the new-parent and baby
 shower gift basket store on `lil-and-mil.myshopify.com`. Built from the
 Brew Hunters theme (`The-Bev-Connect-Portals/Brew_Hunters`): same construction
 and section system, new palette, type and a gift-product layout.
