@@ -78,8 +78,8 @@
         "f4": {
           "type": "faq",
           "settings": {
-            "question": "My order arrived damaged or wrong.",
-            "answer": "<p>Email us within 7 days of delivery with your order number and a photo and we'll make it right. All other sales are final.</p>"
+            "question": "My order arrived damaged, wrong, or never arrived.",
+            "answer": "<p>We refund lost or stolen packages and any item that arrives damaged, missing, or wrong. Email us within 7 days of delivery (or of the expected delivery date if it never arrives) with your order number and photos where applicable. We don't accept returns or exchanges; all other sales are final.</p>"
           }
         },
         "f5": {

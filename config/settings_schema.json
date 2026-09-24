@@ -1,7 +1,7 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Night Shift Gift Co.",
+    "theme_name": "Night Shift Gifts Co.",
     "theme_version": "1.0.0",
     "theme_author": "Go-To Gifting LLC",
     "theme_documentation_url": "https://github.com/jgrasty123/Night-Shift-Gifts",
@@ -25,7 +25,7 @@
         "type": "text",
         "id": "wordmark",
         "label": "Wordmark text",
-        "default": "Night Shift Gift Co."
+        "default": "Night Shift Gifts Co."
       }
     ]
   },

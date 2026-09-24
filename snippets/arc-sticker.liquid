@@ -3,7 +3,7 @@
   Accepts: text, ring (hex/var), ink (hex/var), modifier, uid
 {%- endcomment -%}
 {%- liquid
-  assign sticker_text = text | default: 'Night Shift Gift Co. ·'
+  assign sticker_text = text | default: 'Night Shift Gifts Co. ·'
   assign ring_color = ring | default: 'var(--gold)'
   assign ink_color = ink | default: 'var(--midnight)'
   assign arc_id = 'arc-' | append: uid | default: 'arc-1'

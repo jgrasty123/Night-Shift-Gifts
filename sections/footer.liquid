@@ -63,6 +63,7 @@
 
     <div class="foot__legal">
       <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}{% if section.settings.city != blank %} · {{ section.settings.city }}{% endif %}</span>
+      <span>Owned and operated by Go-To Gifting, LLC · 2264 Goodyear Ave, STE C, Ventura, CA 93003 · <a href="tel:+18444462443">(844) 446-2443</a> · <a href="mailto:Owly@nightshiftgifts.com">Owly@nightshiftgifts.com</a></span>
       {%- if settings.age_notice != blank -%}<span>{{ settings.age_notice }}</span>{%- endif -%}
     </div>
   </div>
@@ -133,7 +134,7 @@
           "type": "text",
           "id": "heading",
           "label": "Heading",
-          "default": "Night Shift Gift Co."
+          "default": "Night Shift Gifts Co."
         },
         {
           "type": "textarea",
