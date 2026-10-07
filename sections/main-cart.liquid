@@ -10,7 +10,7 @@
         <a class="cta" href="{{ routes.all_products_collection_url }}">{{ 'cart.general.continue_shopping' | t }}</a>
       </div>
     {%- else -%}
-      <form action="{{ routes.cart_url }}" method="post" novalidate>
+      <form action="{{ routes.cart_url }}" method="post" novalidate data-cart-page>
         {%- for item in cart.items -%}
           <div class="cart__row">
             <div class="cart__img">
@@ -38,9 +38,15 @@
               {%- endif -%}
             </div>
             <div>
+              {%- if item.properties._ns_parent != blank -%}
+                {%- comment -%} FIX-06: paired add-on — quantity follows its basket {%- endcomment -%}
+                <input type="hidden" name="updates[]" value="{{ item.quantity }}">
+                <span class="cart__props">Qty {{ item.quantity }}</span>
+              {%- else -%}
               <label class="visually-hidden" for="qty-{{ item.index }}">{{ 'products.product.quantity' | t }}</label>
               <input id="qty-{{ item.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0"
                      style="width:64px;padding:.4em;border:2px solid var(--midnight);border-radius:8px;font-family:var(--body)">
+              {%- endif -%}
             </div>
             <div><span class="price">{{ item.final_line_price | money }}</span></div>
           </div>

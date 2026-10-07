@@ -49,6 +49,7 @@
   }
 
   function renderCart(cart) {
+    lastCart = cart;
     setCount(cart.item_count);
     if (!body) return;
 
@@ -78,11 +79,14 @@
           '<div>' +
             '<b>' + escapeHtml(item.product_title) + '</b>' +
             (meta.length ? '<div class="dline__meta">' + meta.join(' · ') + '</div>' : '') +
-            '<div class="qty">' +
-              '<button type="button" data-line-step="-1" aria-label="Decrease quantity">&minus;</button>' +
-              '<output>' + item.quantity + '</output>' +
-              '<button type="button" data-line-step="1" aria-label="Increase quantity">+</button>' +
-            '</div>' +
+            (prop(item, '_ns_parent')
+              // paired add-on: quantity follows its basket, so no stepper
+              ? '<div class="qty" data-addon-line><output>' + item.quantity + '</output></div>'
+              : '<div class="qty">' +
+                  '<button type="button" data-line-step="-1" aria-label="Decrease quantity">&minus;</button>' +
+                  '<output>' + item.quantity + '</output>' +
+                  '<button type="button" data-line-step="1" aria-label="Increase quantity">+</button>' +
+                '</div>') +
             '<button class="dline__remove" type="button" data-line-remove>Remove</button>' +
           '</div>' +
           '<div class="dline__price">' + money(item.final_line_price) + '</div>' +
@@ -93,10 +97,62 @@
     if (subtotal) subtotal.textContent = money(cart.total_price);
   }
 
+  /* ---------------- add-on pairing (FIX-06, audit 2026-10-07) ----------------
+     bb-product-addons.liquid tags a basket line with properties._ns_pair and
+     each paid add-on added with it (card, engraving, glass) with
+     properties._ns_parent = that same id. Add-ons follow their basket:
+     - removing / changing the basket's quantity applies to its add-ons too;
+     - on every cart load, add-ons whose basket is gone are removed and
+       add-on quantities are synced to the basket's (covers the /cart page,
+       which updates server-side).
+     Lines without these keys (older carts, plain adds) are left alone. */
+  function prop(item, key) {
+    return (item && item.properties && item.properties[key]) || null;
+  }
+
+  function postUpdates(updates) {
+    return fetch(root + 'cart/update.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ updates: updates })
+    }).then(function (r) {
+      if (!r.ok) throw new Error('cart update failed');
+      return r.json();
+    });
+  }
+
+  // returns { cart, changed }
+  function reconcile(cart) {
+    var parentQty = {};
+    cart.items.forEach(function (it) {
+      var p = prop(it, '_ns_pair');
+      if (p) parentQty[p] = (parentQty[p] || 0) + it.quantity;
+    });
+    var updates = {}, n = 0;
+    cart.items.forEach(function (it) {
+      var parent = prop(it, '_ns_parent');
+      if (!parent) return;
+      var want = parentQty[parent] || 0;
+      if (it.quantity !== want) { updates[it.key] = want; n++; }
+    });
+    if (!n) return Promise.resolve({ cart: cart, changed: false });
+    return postUpdates(updates)
+      .then(function (c) { return { cart: c, changed: true }; },
+            function () { return { cart: cart, changed: false }; });
+  }
+
+  var lastCart = null;
+
   function fetchCart() {
     return fetch(root + 'cart.js', { headers: { 'Accept': 'application/json' } })
       .then(function (r) { return r.json(); })
-      .then(function (cart) { renderCart(cart); return cart; });
+      .then(reconcile)
+      .then(function (res) {
+        lastCart = res.cart;
+        renderCart(res.cart);
+        res.cart.__reconciled = res.changed;
+        return res.cart;
+      });
   }
 
   function openCart() {
@@ -161,13 +217,27 @@
       if (next === null || next < 0) return;
 
       body.style.opacity = '.5';
-      fetch(root + 'cart/change.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ line: index, quantity: next })
-      })
-        .then(function (r) { return r.json(); })
-        .then(renderCart)
+      var item = lastCart && lastCart.items[index - 1];
+      var pair = prop(item, '_ns_pair');
+      var request;
+      if (pair) {
+        // basket with paired add-ons: change them together in one call
+        var updates = {};
+        updates[item.key] = next;
+        lastCart.items.forEach(function (it) {
+          if (prop(it, '_ns_parent') === pair) updates[it.key] = next;
+        });
+        request = postUpdates(updates);
+      } else {
+        request = fetch(root + 'cart/change.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ line: index, quantity: next })
+        }).then(function (r) { return r.json(); });
+      }
+      request
+        .then(reconcile)
+        .then(function (res) { renderCart(res.cart); })
         .catch(function () { window.location.href = root + 'cart'; })
         .finally(function () { body.style.opacity = ''; });
     });
@@ -281,7 +351,16 @@
   };
 
   // paint the badge on load
-  setCount(parseInt((document.querySelector('[data-cart-count]') || {}).textContent || '0', 10));
+  var initialCount = parseInt((document.querySelector('[data-cart-count]') || {}).textContent || '0', 10);
+  setCount(initialCount);
+
+  // FIX-06: sweep orphaned / out-of-sync add-ons on every page with a cart.
+  // The /cart page renders server-side, so reload it if anything changed.
+  if (initialCount > 0) {
+    fetchCart().then(function (cart) {
+      if (cart.__reconciled && document.querySelector('[data-cart-page]')) window.location.reload();
+    }, function () {});
+  }
 
   /* ---------------- product gallery ---------------- */
   var thumbs = document.querySelector('[data-pdp-thumbs]');

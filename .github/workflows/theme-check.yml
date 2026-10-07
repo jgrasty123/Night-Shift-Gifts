@@ -36,4 +36,4 @@ jobs:
       - name: Install Playwright
         run: npm i --no-save playwright@1 && npx playwright install --with-deps chromium
       - name: Run cart tests
-        run: node tests/cart-add.test.mjs
+        run: node tests/cart-add.test.mjs && node tests/cart-addons.test.mjs

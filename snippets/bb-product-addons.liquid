@@ -100,12 +100,23 @@
           else if (String(input.value || '').trim()) properties[m[1]] = input.value.trim();
         });
 
+        // FIX-06 (audit 2026-10-07): pair the basket with its paid add-ons.
+        // The basket line gets _ns_pair, each add-on gets _ns_parent with the
+        // same id. night-shift.js uses these to remove / re-quantity add-ons
+        // with their basket and to sweep orphans. Underscore keys are hidden
+        // from the cart display and from checkout.
+        var pairId = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+        properties._ns_pair = pairId;
+
         var sellingPlan = form.querySelector('input[name="selling_plan"]:checked');
         var main = { id: variantId, quantity: quantity, properties: properties };
         if (sellingPlan && sellingPlan.value) main.selling_plan = parseInt(sellingPlan.value, 10);
 
         var payload = [main].concat(items.map(function (a) {
-          return { id: a.id, quantity: quantity, properties: a.properties };
+          var p = {};
+          Object.keys(a.properties || {}).forEach(function (k) { p[k] = a.properties[k]; });
+          p._ns_parent = pairId;
+          return { id: a.id, quantity: quantity, properties: p };
         }));
 
         var btn = form.querySelector('[type="submit"]');
