@@ -62,18 +62,18 @@
       // line item properties (e.g. Gift message); skip Shopify's _private keys
       var props = Object.keys(item.properties || {})
         .filter(function (k) { return k.charAt(0) !== '_' && item.properties[k]; })
-        .map(function (k) { return k + ': ' + escapeHtml(item.properties[k]); })
+        .map(function (k) { return escapeHtml(k) + ': ' + escapeHtml(item.properties[k]); })
         .join(' · ');
 
       var meta = [];
       if (item.variant_title && item.variant_title !== 'Default Title') meta.push(escapeHtml(item.variant_title));
-      if (item.selling_plan_allocation) meta.push(item.selling_plan_allocation.selling_plan.name);
+      if (item.selling_plan_allocation) meta.push(escapeHtml(item.selling_plan_allocation.selling_plan.name));
       if (props) meta.push(props);
 
       return '' +
         '<div class="dline" data-line="' + (i + 1) + '">' +
           '<div class="dline__img">' +
-            (item.image ? '<img src="' + item.image.replace(/(\.[a-z]+)(\?|$)/i, '_160x$1$2') + '" alt="">' : '') +
+            (item.image ? '<img src="' + escapeHtml(item.image.replace(/(\.[a-z]+)(\?|$)/i, '_160x$1$2')) + '" alt="">' : '') +
           '</div>' +
           '<div>' +
             '<b>' + escapeHtml(item.product_title) + '</b>' +
@@ -173,32 +173,89 @@
     });
   }
 
-  /* ---------------- add to cart ---------------- */
+  /* ---------------- add to cart ----------------
+     FIX-02 (audit 2026-10-07): the add (write) and the drawer refresh (read)
+     have separate failure paths. A confirmed add is NEVER repeated: if the
+     refresh fails we go to /cart. If the add itself returns an error we show
+     it and stop. If the network result is ambiguous we reconcile by loading
+     the real cart instead of reposting. One add in flight per form. */
+  function showAddError(form, btn, msg) {
+    var el = form.querySelector('[data-add-error]');
+    if (!el) {
+      el = document.createElement('p');
+      el.setAttribute('data-add-error', '');
+      el.setAttribute('role', 'alert');
+      el.className = 'form-error';
+      el.style.margin = '.5rem 0 0';
+      el.style.color = '#b42318';
+      el.style.fontSize = '.9rem';
+      if (btn && btn.parentNode) btn.parentNode.insertBefore(el, btn.nextSibling);
+      else form.appendChild(el);
+    }
+    el.textContent = msg;
+    el.hidden = false;
+  }
+
+  function clearAddError(form) {
+    var el = form.querySelector('[data-add-error]');
+    if (el) { el.textContent = ''; el.hidden = true; }
+  }
+
   function submitAdd(form, btn) {
+    if (form.getAttribute('data-add-pending') === 'true') return Promise.resolve();
+    form.setAttribute('data-add-pending', 'true');
+    clearAddError(form);
+
     var label = btn ? btn.textContent : '';
-    if (btn) { btn.setAttribute('data-state', 'loading'); btn.textContent = 'Adding…'; }
+    if (btn) { btn.setAttribute('data-state', 'loading'); btn.textContent = 'Adding…'; btn.disabled = true; }
+
+    function reset(delay) {
+      var done = function () {
+        form.removeAttribute('data-add-pending');
+        if (btn) { btn.removeAttribute('data-state'); btn.textContent = label; btn.disabled = false; }
+      };
+      if (delay) setTimeout(done, delay); else done();
+    }
 
     return fetch(form.action || (root + 'cart/add'), {
       method: 'POST',
       headers: { 'Accept': 'application/json' },
       body: new FormData(form)
     })
-      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+      .then(function (r) {
+        return r.json()
+          .catch(function () { return null; })
+          .then(function (d) { return { ok: r.ok, status: r.status, data: d }; });
+      }, function () {
+        // Network failure / no response: the add may or may not have landed.
+        // Reconcile with the server cart; never repost automatically.
+        return { ambiguous: true };
+      })
       .then(function (res) {
-        if (!res.ok) throw new Error(res.data && res.data.description || 'Add failed');
+        if (res.ambiguous) {
+          return fetchCart()
+            .then(function () {
+              reset();
+              showAddError(form, btn, 'We couldn\u2019t confirm that item was added. Please check your cart before trying again.');
+              openCart();
+            }, function () { window.location.href = root + 'cart'; });
+        }
+
+        if (!res.ok) {
+          // Shopify rejected the add (sold out, invalid variant, etc.) — nothing was added.
+          reset();
+          var msg = (res.data && (res.data.description || res.data.message)) || 'Sorry, that item couldn\u2019t be added.';
+          showAddError(form, btn, String(msg));
+          return;
+        }
+
+        // Add confirmed. From here on, failures only affect the display.
         if (btn) { btn.setAttribute('data-state', 'done'); btn.textContent = 'Added'; }
         var note = form.querySelector('[data-gift-message]');
         if (note) { note.value = ''; note.dispatchEvent(new Event('input')); }
-        return fetchCart().then(function () {
-          openCart();
-          setTimeout(function () {
-            if (btn) { btn.removeAttribute('data-state'); btn.textContent = label; }
-          }, 1600);
-        });
-      })
-      .catch(function () {
-        if (btn) { btn.removeAttribute('data-state'); btn.textContent = label; }
-        form.submit();                  // fall back to the normal POST
+        return fetchCart()
+          .then(function () { openCart(); reset(1600); },
+                function () { window.location.href = root + 'cart'; });
       });
   }
 
